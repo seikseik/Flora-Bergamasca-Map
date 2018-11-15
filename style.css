@@ -12,11 +12,14 @@
   position:relative;
 }
 
- p{
-     display:inline-flex;
+ .testi p{
+     width:370px;
      color:black;
      padding:10px;
+     /* text-align: justify; */
  }
+
+
 
 .slide-over .slideover-content {
   display: block;
@@ -40,7 +43,7 @@
     left: 0;
     background-color: white; /* Black*/
     overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
+    padding-top: 0px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
 }
 
@@ -68,14 +71,79 @@
     margin-left: 50px;
 }
 
-/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-#main {
-    transition: margin-left .5s;
-    padding: 20px;
-}
 
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
+}
+
+
+
+#apri{
+  font-size:50px;
+  padding:0px 15px 0px 15px;
+  color:black;
+  background-color: grey;
+  position:absolute;
+  left:0px;
+  transition: 0.5s;
+  z-index: 1000;
+}
+
+
+
+#ring-size-tabs{
+ border: 0;
+}
+
+.ring-list-drop{
+    border: none;
+    padding: 3px 5px;
+    max-width: 100%;
+    width: 400px;
+}
+
+    #ringTabDrop{
+      display: block;
+      cursor: pointer;
+      color:black;
+      text-decoration: none;
+      padding:10px;
+  }
+
+  .caret{
+    top: 0;
+    bottom: 0;
+    right: 15px;
+    margin: auto;
+    position: absolute;
+  }
+
+
+  #ring_contents{
+      width: 100%;
+      max-width: 100%;
+      color:black;
+      border: none;
+      background: #fff;
+  }
+
+   .dropdown-toggle{
+     border: 0;
+   }
+
+   .nav a{
+     font-size:18px;
+     border-bottom: 1px solid #d3d3d3;
+   }
+
+
+
+.include{
+  display:none;
+}
+
+.active{
+  display:contents;
 }

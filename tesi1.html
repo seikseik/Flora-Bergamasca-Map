@@ -18,22 +18,38 @@
 
 <body>
 
-
-
 <div id='map'></div>
 <div class="container"></div>
-<h1 onclick="openNav()">OPEN</h1>
+
+
+<div onmouseover="openNav()" onclick="closeNav()" id="apri" >&times;</div>
 
 <div id="mySidenav" class="sidenav">
- <div class="col-md-4"></div>
 
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <!-- <a id ="prova2" href="#">prova2</a> -->
-    <div w3-include-html="prova.html"></div>
+  <ul class="nav nav-tabs" id="ring-size-tabs" role="tablist">
+  <li role="presentation" class="dropdown ring-list-drop active">
+   <a href="#" class="dropdown-toggle" id="ringTabDrop" data-toggle="dropdown" aria-controls="ring_contents" aria-expanded="false">Capitoli </a><span class="caret"></span>
+   <ul class="dropdown-menu" aria-labelledby="ringTabDrop" id="ring_contents">
+     <li class=""><a href="#japan_ringsize" role="tab" data-toggle="tab" aria-expanded="false">Bergamo</a></li>
+     <li class=""><a href="#italy_ringsize" role="tab" data-toggle="tab" aria-expanded="false">Geologia e clima</a></li>
+     <li class=""><a href="#france_ringsize" role="tab" data-toggle="tab" aria-expanded="false">Ricchezza floristica</a></li>
+     <li class="active"><a href="#spain_ringsize" role="tab" data-toggle="tab" aria-expanded="true">Corologia</a></li>
+     <li class=""><a href="#germany_ringsize" role="tab" data-toggle="tab" aria-expanded="false">Tipi biologici </a></li>
+     <li class=""><a href="#uk_ringsize" role="tab" data-toggle="tab" aria-expanded="false">Specie allergeniche</a></li>
+     <li class=""><a href="#us_ringsize" role="tab" data-toggle="tab" aria-expanded="false"></a></li>
+   </ul>
+  </li>
+  </ul>
+
+ <div class="col-md-12 testi">
+
+    <!-- <div id="prova" class="include active" w3-include-html="prova.html"></div> -->
+    <div id="prova2" class="include" w3-include-html="prova.html"></div>
+
+
+    </div>
 
 </div>
-
-
 
 
 
@@ -45,10 +61,11 @@
 
 
 </body>
+
 <script>
 $(document).ready(function () {
        w3.includeHTML();
    });
-
 </script>
+
 </html>
