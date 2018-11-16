@@ -22,29 +22,31 @@
 <div class="container"></div>
 
 
-<div onmouseover="openNav()" onclick="closeNav()" id="apri" >&times;</div>
+<div onmouseover="openNav()" onclick="closeNav()" id="apri" >
+  <div class="icona">&times;</div>
+</div>
 
 <div id="mySidenav" class="sidenav">
 
-  <ul class="nav nav-tabs" id="ring-size-tabs" role="tablist">
-  <li role="presentation" class="dropdown ring-list-drop active">
-   <a href="#" class="dropdown-toggle" id="ringTabDrop" data-toggle="dropdown" aria-controls="ring_contents" aria-expanded="false">Capitoli </a><span class="caret"></span>
-   <ul class="dropdown-menu" aria-labelledby="ringTabDrop" id="ring_contents">
-     <li class=""><a href="#japan_ringsize" role="tab" data-toggle="tab" aria-expanded="false">Bergamo</a></li>
-     <li class=""><a href="#italy_ringsize" role="tab" data-toggle="tab" aria-expanded="false">Geologia e clima</a></li>
-     <li class=""><a href="#france_ringsize" role="tab" data-toggle="tab" aria-expanded="false">Ricchezza floristica</a></li>
-     <li class="active"><a href="#spain_ringsize" role="tab" data-toggle="tab" aria-expanded="true">Corologia</a></li>
-     <li class=""><a href="#germany_ringsize" role="tab" data-toggle="tab" aria-expanded="false">Tipi biologici </a></li>
-     <li class=""><a href="#uk_ringsize" role="tab" data-toggle="tab" aria-expanded="false">Specie allergeniche</a></li>
-     <li class=""><a href="#us_ringsize" role="tab" data-toggle="tab" aria-expanded="false"></a></li>
+  <ul class="nav nav-tabs" id="ring-size-tabs">
+  <li class="dropdown ring-list-drop active">
+   <a href="#" class="dropdown-toggle" id="ringTabDrop" data-toggle="dropdown">Capitoli</a><span class="caret"></span>
+   <ul class="dropdown-menu" id="ring_contents">
+     <!-- <li onclick="getElementById('prova').setAttribute("w3-include-html", "prova2.html");"><a href="#">Bergamo</a></li> -->
+     <li onclick="bergamo()"><a href="#">Bergamo</a></li>
+
+     <li class=""><a href="#">Geologia e clima</a></li>
+     <li class=""><a href="#">Ricchezza floristica</a></li>
+     <li class=""><a href="#">Corologia</a></li>
+     <li class=""><a href="#">Tipi biologici </a></li>
+     <li class=""><a href="#">Specie allergeniche</a></li>
    </ul>
   </li>
   </ul>
 
  <div class="col-md-12 testi">
 
-    <!-- <div id="prova" class="include active" w3-include-html="prova.html"></div> -->
-    <div id="prova2" class="include" w3-include-html="prova.html"></div>
+    <div id="prova"></div>
 
 
     </div>
@@ -52,9 +54,8 @@
 </div>
 
 
-
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="https://www.w3schools.com/lib/w3.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script src="main.js"></script>
@@ -64,7 +65,9 @@
 
 <script>
 $(document).ready(function () {
-       w3.includeHTML();
+       // w3.includeHTML();
+         $("#prova").load("./prova.html");
+
    });
 </script>
 
