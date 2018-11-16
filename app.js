@@ -19,12 +19,6 @@ $("#ring_contents li a").click(function(){
 
 
 
-// raccogli in una variabili gli elementi del menu, aggiungi evento al click -> se click togli classe
-//active da uno e aggiungila a quello cliccato, accendi href collegato e spegni precedente.
-
-
-// var x = document.getElementById("prova")
-
 function bergamo(){
-  $("#prova").load("./prova2.html");
+  $("#contenuto").load("./bergamo.html");
 }
