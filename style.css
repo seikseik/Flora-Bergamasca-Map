@@ -35,7 +35,7 @@
     z-index: 1; /* Stay on top */
     top: 0; /* Stay at the top */
     left: 0;
-    background-color: white; /* Black*/
+    background-color: #F9F9F9; /* Black*/
     overflow-y:scroll;
  /* Disable horizontal scroll */
     padding-top: 0px; /* Place content 60px from the top */
@@ -76,7 +76,7 @@
 
 
 .icona{
-  font-size:50px;
+  font-size:30px;
   line-height: 0px;
   display:flex;
   color:black;
@@ -96,6 +96,7 @@
 
 .nav-tabs .dropdown-menu {
     margin-top:1px;
+
 }
 
 
@@ -107,8 +108,7 @@
 
 .ring-list-drop{
     border: none;
-    max-width: 100%;
-    width: 400px;
+    width: 510px;
 }
 
     #ringTabDrop{
@@ -116,6 +116,7 @@
       cursor: pointer;
       color:black;
       text-decoration: none;
+      /* position: fixed; */
   }
 
 
@@ -130,13 +131,13 @@
    .dropdown-toggle{
      padding: 4px 8px 8px 32px;
      border: 0;
-     font-size:18px;
+     font-size:15px;
      line-height: 40px;
 
    }
 
     .dropdown-menu a{
-     font-size:18px;
+     font-size:15px;
      line-height: 40px;
      border-bottom: 1px solid #d3d3d3;
    }
@@ -147,6 +148,8 @@
   }
 
   .nav a {
+    font-family: 'Roboto', sans-serif;
+
       padding: 6px 8px 8px 32px;
       text-decoration: none;
       /* font-size: 25px; */
@@ -162,29 +165,19 @@
 
 /* STILE TESTI  */
 
-.testi{
+/* .testi{
    width:370px;
    color:black;
    padding:10px;
    /* text-align: justify; */
-}
+} */
 
 
 .par{
   margin-bottom:15px;
 }
 
-h2{
-  font-weight: bold;
-  font-size:16px;
-}
-
-
-
-
-
-
-
+/* FEATURES */
 
 
 #features {
@@ -192,11 +185,14 @@ h2{
 }
 
 section {
-    padding:  25px 50px;
+  font-family: 'PT Serif', serif;
+    padding:  50px 15px;
+    padding-left: 25px;
     line-height: 25px;
+    width:480px;
     border-bottom: 1px solid #ddd;
     opacity: 0.25;
-    font-size: 13px;
+    font-size: 15px;
 }
 section.active {
     opacity: 1;
@@ -204,4 +200,11 @@ section.active {
 section:last-child {
     border-bottom: none;
     margin-bottom: 200px;
+}
+
+section h2{
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size:15px;
+  margin-bottom: 10px;
 }

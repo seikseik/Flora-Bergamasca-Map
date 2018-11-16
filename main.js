@@ -18,17 +18,17 @@ var map = new mapboxgl.Map({
 });
 
 
-// map.on('load', function() {
-//     map.addLayer({
-//       id: 'decimali',
-//       type: 'circle',
-//       source: {
-//         type: 'vector',
-//         url: 'mapbox://matteoseik.0a0kmzav'
-//       },
-//       'source-layer': 'decimali',
-//     });
-//   });
+map.on('load', function() {
+    map.addLayer({
+      id: 'decimali',
+      type: 'circle',
+      source: {
+        type: 'vector',
+        url: 'mapbox://matteoseik.0a0kmzav'
+      },
+      'source-layer': 'decimali',
+    });
+  });
 
 
 var chapters = {

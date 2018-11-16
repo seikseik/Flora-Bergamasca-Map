@@ -1,8 +1,8 @@
 
 
 function openNav() {
-    document.getElementById("mySidenav").style.width = "400px";
-    document.getElementById("apri").style.left = "400px";
+    document.getElementById("mySidenav").style.width = "500px";
+    document.getElementById("apri").style.left = "500px";
     // document.getElementById("apri").onlick = "closeNav()";
 }
 
@@ -14,7 +14,7 @@ function closeNav() {
 
 
 $("#ring_contents li a").click(function(){
-  $("#ringTabDrop").text('Ring size Format: ' + $(this).text());
+  $("#ringTabDrop").text($(this).text());
 });
 
 
