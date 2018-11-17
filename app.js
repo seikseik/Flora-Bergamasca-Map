@@ -22,3 +22,5 @@ $("#ring_contents li a").click(function(){
 function bergamo(){
   $("#contenuto").load("./bergamo.html");
 }
+
+// potrei aggiungere a tutti gli elementi della lista un event click e poi usare This.html per aggiungere poi $("#contenuto").load("./ +this.html+ .html");

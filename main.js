@@ -1,7 +1,5 @@
 $(document).ready(function () {
-
          $("#features").load("./bergamo.html");
-
    });
 
 
@@ -11,24 +9,89 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibWF0dGVvc2VpayIsImEiOiJjajQxbzYyamYwZ3BoMnFwY
 
 var map = new mapboxgl.Map({
     container: 'map', // container id
-    style: 'mapbox://styles/matteoseik/cjncubnsr0ylz2skfivlu76on', //hosted style id
+    style: 'mapbox://styles/matteoseik/cjnsxmwc23cmb2slpa6lqrsse', //hosted style id
     center: [9.674504
 , 45.695638], // starting position
     zoom: 13 // starting zoom
 });
 
 
+
+var titolo = "nome-completo";
+var nome = "Artemisia verlotiorum Lamotte";
+
+
+
+
 map.on('load', function() {
-    map.addLayer({
-      id: 'decimali',
-      type: 'circle',
-      source: {
-        type: 'vector',
-        url: 'mapbox://matteoseik.0a0kmzav'
-      },
-      'source-layer': 'decimali',
+  map.addSource('segnalazioni', {
+    type: 'geojson',
+    data: './json/decimali.geojson'
+});
+
+  map.addLayer({
+        'id': 'prova',
+        'type': 'circle',
+        'source': 'segnalazioni',
+        'layout': {
+            'visibility': 'visible'
+        },
+        'paint': {
+            'circle-radius': 3,
+            'circle-color': 'red'
+        },
     });
+
+    map.setFilter('prova', ['==', titolo, nome]);
+
   });
+
+
+
+function cambianome(){
+  titolo = "ciaone"
+  console.log("ciao");
+  console.log(nome);
+}
+
+
+
+window.addEventListener("click", function(){
+
+  map.addLayer({
+          'id': 'prova2',
+          'type': 'circle',
+          'source': 'segnalazioni',
+          'layout': {
+              'visibility': 'visible'
+          },
+          'paint': {
+              'circle-radius': 3,
+              'circle-color': 'red'
+          },
+      });
+
+      map.setFilter('prova2', ['==', "nome-completo", "Chenopodium album L."]);
+
+    map.style._layers.prova.visibility="none";
+});
+
+
+// var titolo = "nome-completo";
+// var nome = "Artemisia verlotiorum Lamotte"
+
+// map.on('load', function() {
+//     map.addLayer({
+//       id: 'decimali',
+//       type: 'circle',
+//       source: {
+//         type: 'vector',
+//         url: 'mapbox://matteoseik.0a0kmzav'
+//       },
+//       'source-layer': 'decimali',
+//     });
+//   });
+
 
 
 var chapters = {
@@ -67,11 +130,13 @@ var chapters = {
 };
 
 
+//potrei provare ad aggiungere capitoli all'ogetto chapters per tutti i file,
+//solo che anzi che chiamare funzione flyto dovrebbe accendere un livello con stesso nome capitolo
+
 var side = document.getElementById("mySidenav");
 
 // On every scroll event, check which element is on screen
 side.onscroll = function() {
-  console.log("ciao");
   var chapterNames = Object.keys(chapters);
   for (var i = 0; i < chapterNames.length; i++) {
       var chapterName = chapterNames[i];
@@ -82,11 +147,24 @@ side.onscroll = function() {
   }
 };
 
+// imposta primo capitolo attivo e se corrisponde a quello sullo schermo lancia funzione flyTo
+// potrei sostituire par1 con variabile che trova primo id nell'html caricato
+// creare funzione turnOn(nomeLayer) che parte solo se i capitoli hanno proprietà specifica
+// i chapter con layer hanno proprietà che poi dovranno essere inserite nel addLayer di mapbox
+
+//var primoIdCapitolo;
+
+
 var activeChapterName = 'par1';
 function setActiveChapter(chapterName) {
   if (chapterName === activeChapterName) return;
 
   map.flyTo(chapters[chapterName]);
+
+
+
+ // cambianome();
+
 
   document.getElementById(chapterName).setAttribute('class', 'active');
   document.getElementById(activeChapterName).setAttribute('class', '');
@@ -94,9 +172,9 @@ function setActiveChapter(chapterName) {
   activeChapterName = chapterName;
 }
 
+
 function isElementOnScreen(id) {
   var element = document.getElementById(id);
   var bounds = element.getBoundingClientRect();
   return bounds.top < window.innerHeight && bounds.bottom > 0;
-  // return bounds.top <= 0;
 }
