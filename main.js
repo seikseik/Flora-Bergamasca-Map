@@ -1,6 +1,3 @@
-$(document).ready(function () {
-         $("#features").load("./bergamo.html");
-   });
 
 
 
@@ -48,84 +45,39 @@ map.on('load', function() {
 
 
 
-function cambianome(){
-  titolo = "ciaone"
-  console.log("ciao");
-  console.log(nome);
-}
-
-
-
-window.addEventListener("click", function(){
-
-  map.addLayer({
-          'id': 'prova2',
-          'type': 'circle',
-          'source': 'segnalazioni',
-          'layout': {
-              'visibility': 'visible'
-          },
-          'paint': {
-              'circle-radius': 3,
-              'circle-color': 'red'
-          },
-      });
-
-      map.setFilter('prova2', ['==', "nome-completo", "Chenopodium album L."]);
-
-    map.style._layers.prova.visibility="none";
-});
-
-
-// var titolo = "nome-completo";
-// var nome = "Artemisia verlotiorum Lamotte"
-
-// map.on('load', function() {
-//     map.addLayer({
-//       id: 'decimali',
-//       type: 'circle',
-//       source: {
-//         type: 'vector',
-//         url: 'mapbox://matteoseik.0a0kmzav'
-//       },
-//       'source-layer': 'decimali',
-//     });
-//   });
-
-
 
 var chapters = {
   'par1': {
       bearing: 27,
-      center: [-0.15591514, 51.51830379],
-      zoom: 15.5,
-      pitch: 20
+      center: [9.663388242592475, 45.70322207904454],
+      zoom: 13,
+      pitch: 30
   },
   'par2': {
-      duration: 6000,
-      center: [-0.07571203, 51.51424049],
-      bearing: 150,
-      zoom: 15,
-      pitch: 0
+      duration: 5000,
+      center: [9.63958919379263, 45.70906309335106],
+      bearing: 0,
+      zoom: 13.5,
+      pitch: 20
   },
   'par3': {
-      bearing: 90,
-      center: [-0.08533793, 51.50438536],
-      zoom: 13,
-      speed: 0.6,
-      pitch: 40
+      duration: 5000,
+      center: [9.619577301514795, 45.71923272349616],
+      zoom: 13.5,
+      // speed: 0.6,
+      pitch: 20
   },
   'par4': {
-      bearing: 90,
-      center: [0.05991101, 51.48752939],
-      zoom: 12.3
+      duration: 5000,
+      center: [9.626645125608746, 45.69971401304966],
+      zoom: 13.5
   },
   'par5': {
-      bearing: 45,
-      center: [-0.18335806, 51.49439521],
-      zoom: 15.3,
+      duration: 5000,
+      center: [9.667469200116699, 45.72584639715879],
+      zoom: 13,
       pitch: 20,
-      speed: 0.5
+
   }
 };
 
@@ -163,9 +115,6 @@ function setActiveChapter(chapterName) {
 
 
 
- // cambianome();
-
-
   document.getElementById(chapterName).setAttribute('class', 'active');
   document.getElementById(activeChapterName).setAttribute('class', '');
 
@@ -176,5 +125,5 @@ function setActiveChapter(chapterName) {
 function isElementOnScreen(id) {
   var element = document.getElementById(id);
   var bounds = element.getBoundingClientRect();
-  return bounds.top < window.innerHeight && bounds.bottom > 0;
+  return bounds.top < window.innerHeight && bounds.bottom > 100;
 }
