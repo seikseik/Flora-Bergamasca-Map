@@ -21,14 +21,19 @@ function closeNav() {
 
 
 
-// $("#ring_contents li a").click(function(){
-//   $("#ringTabDrop").text($(this).text());
-// });
+$("#ring_contents li a").click(function(){
+  $("#ringTabDrop").text($(this).text());
+
+});
 
 
 $(document).ready(function () {
          $("#features").load("./bergamo.html");
    });
+
+
+
+
 
 
 // let lista = document.querySelector(".dropdown-menu");

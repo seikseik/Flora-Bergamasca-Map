@@ -3,10 +3,12 @@
 
 
 <hr id ="primo-cap">
+
 <section id="par1" class="active">
   <h2 id="primo">1. IL TERRITORIO DI BERGAMO</h2>
 Al viaggiatore che giunge a Bergamo risulta subito evidente la sua collocazione scenografica, circondata dalla catena delle prealpi bergamasche e delle Orobie. Segna un confine tra due territori profondamente diversi, uno a settentrione in cui l'uomo ha conservato segni deboli, ma ancora visibili, della fisionomia del paesaggio naturale del passato, e l'altra a meridione, più profondamente modificata, perché fosse al servizio della comunità che vi si è insediata.
 </section>
+
 <section id="par2">
 La cerniera dei colli che ospitano la Città alta si increspa più volte in un asse quasi rettilineo, disposto in direzione NW-SE,  e raggiunge l’altitudine massima di 495,8 m al Castello di S. Vigilio. Il capo di NW della cerniera si chiude al di fuori dei confini cittadini, nel comune di Paladina, dove si immerge nei sedimenti del fiume Brembo, mentre il capo di SE si spegne in quelli del Serio, all'interno della città.
 </section>
@@ -17,18 +19,13 @@ Una dorsale della cerniera, più rilevata delle altre, puntando verso NE funge d
 I versanti settentrionali dei colli presentano dalla cerniera fin nella piana sottostante un manto forestale che si dirada bruscamente dove l'esposizione migliora, per cedere il passo a un insediamento diffuso, con ampie porzioni di verde, una volta coltivato, ma oggi tenuto generalmente a parco privato o pubblico.
 </section>
 
-
 <section id="par4">
 Alla base del versante meridionale la piana è divisa in tre ampie porzioni da due dorsali che si spingono in direzione SW: da W a E, la piana di Fontana e di Astino, a vocazione agricola con ampi seminativi, e della Conca d'Oro, più residenziale, ma ancora con ampie porzioni di verde. La piana di Fontana segna nelle vicinanze del Santuario della Madonna della Castagna il punto più occidentale del territorio (9°37'9" long.). Tutta la fascia collinare esposta a S, dal piano fino alla cerniera dell'allineamento collinare, è interessata da un insediamento diffuso, in cui piccoli nuclei abitativi sono separati da estese porzioni di territorio mantenute a parco privato o sfruttate per la produzione orticola. Solo a W della Madonna della Castagna, e fino alla cresta, e sui bordi della Conca di Astino (Bosco dell'Allegrezza a W, Bosco di Astino a E), permane un mantello forestale significativo.
 </section>
 
-
 <section id="par5">
 Un secondo allineamento rilevato cinge il territorio cittadino a NE, congiungendo il Colle della Maresana al colle di Ranica, all'inizio della val Seriana. Alla quota di circa 625 m il crinale raggiunge il punto più settentrionale del territorio (45°43'53" lat.).
 </section>
-
-
-
 
 
 
@@ -38,6 +35,7 @@ Un secondo allineamento rilevato cinge il territorio cittadino a NE, congiungend
   <h2 id="secondo">2. GEOLOGIA</h2>
 Al viaggiatore che giunge a Bergamo risulta subito evidente la sua collocazione scenografica, circondata dalla catena delle prealpi bergamasche e delle Orobie. Segna un confine tra due territori profondamente diversi, uno a settentrione in cui l'uomo ha conservato segni deboli, ma ancora visibili, della fisionomia del paesaggio naturale del passato, e l'altra a meridione, più profondamente modificata, perché fosse al servizio della comunità che vi si è insediata.
 </section>
+
 <section id="liv-geo2">
 La cerniera dei colli che ospitano la Città alta si increspa più volte in un asse quasi rettilineo, disposto in direzione NW-SE,  e raggiunge l’altitudine massima di 495,8 m al Castello di S. Vigilio. Il capo di NW della cerniera si chiude al di fuori dei confini cittadini, nel comune di Paladina, dove si immerge nei sedimenti del fiume Brembo, mentre il capo di SE si spegne in quelli del Serio, all'interno della città.
 </section>
@@ -48,7 +46,94 @@ Una dorsale della cerniera, più rilevata delle altre, puntando verso NE funge d
 I versanti settentrionali dei colli presentano dalla cerniera fin nella piana sottostante un manto forestale che si dirada bruscamente dove l'esposizione migliora, per cedere il passo a un insediamento diffuso, con ampie porzioni di verde, una volta coltivato, ma oggi tenuto generalmente a parco privato o pubblico.
 </section>
 
-
 <section id="liv-par9">
 Alla base del versante meridionale la piana è divisa in tre ampie porzioni da due dorsali che si spingono in direzione SW: da W a E, la piana di Fontana e di Astino, a vocazione agricola con ampi seminativi, e della Conca d'Oro, più residenziale, ma ancora con ampie porzioni di verde. La piana di Fontana segna nelle vicinanze del Santuario della Madonna della Castagna il punto più occidentale del territorio (9°37'9" long.). Tutta la fascia collinare esposta a S, dal piano fino alla cerniera dell'allineamento collinare, è interessata da un insediamento diffuso, in cui piccoli nuclei abitativi sono separati da estese porzioni di territorio mantenute a parco privato o sfruttate per la produzione orticola. Solo a W della Madonna della Castagna, e fino alla cresta, e sui bordi della Conca di Astino (Bosco dell'Allegrezza a W, Bosco di Astino a E), permane un mantello forestale significativo.
+<div id="container"></div>
 </section>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+Highcharts.chart('container', {
+chart: {
+    zoomType: 'xy',
+    backgroundColor: '#F9F9F9',
+},
+title: {
+    text: ''
+},
+subtitle: {
+    text: ''
+},
+xAxis: [{
+    categories: ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu',
+        'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'],
+    crosshair: true
+}],
+yAxis: [{ // Primary yAxis
+    labels: {
+        format: '{value}°C',
+        style: {
+
+            color: Highcharts.getOptions().colors[1]
+        }
+    },
+    title: {
+        text: '',
+        style: {
+            color: Highcharts.getOptions().colors[1]
+        }
+    }
+}, { // Secondary yAxis
+    title: {
+        text: '',
+        style: {
+            color: Highcharts.getOptions().colors[1]
+        }
+    },
+    labels: {
+        format: '{value} mm',
+        style: {
+            color: Highcharts.getOptions().colors[1]
+        }
+    },
+    opposite: true
+}],
+tooltip: {
+    shared: true
+},
+legend: {
+    layout: 'vertical',
+    align: 'left',
+    x: 120,
+    verticalAlign: 'top',
+    y: 100,
+    floating: true,
+    backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#F9F9F9'
+},
+series: [{
+    name: 'Pioggia',
+    type: 'column',
+    yAxis: 1,
+    data: [69.6, 74.9, 72.2, 100.4, 111.1, 102.7, 95.1, 120.2, 98.9, 103.8, 153.9, 82.6],
+    tooltip: {
+        valueSuffix: ' mm'
+    }
+
+}, {
+    name: 'Temperatura',
+    type: 'spline',
+    data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6],
+    tooltip: {
+        valueSuffix: '°C'
+    }
+}]
+});
+</script>
