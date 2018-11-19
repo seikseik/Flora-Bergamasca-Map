@@ -27,18 +27,12 @@ map.on('load', function() {
 
 
 
-
-
-var side = document.getElementById("mySidenav");
-
-
-
-
 // On every scroll event, check which element is on screen
-
+var side = document.getElementById("mySidenav");
 side.onscroll = function() {
 
   var chapterNames = Object.keys(chapters);
+
   for (var i = 0; i < chapterNames.length; i++) {
       var chapterName = chapterNames[i];
       if (isElementOnScreen(chapterName)) {
@@ -50,13 +44,22 @@ side.onscroll = function() {
 
 
 
+
+//  INIZIO FUNZIONE ACCENDI LIVELLO 1
+
 function addCerchio(filtro1, filtro2, colore, nome){
+
+
+
+
+var capitoli = Object.keys(chapters);
+
   map.addLayer({
         'id': nome,
         'type': 'circle',
         'source': 'segnalazioni',
         'layout': {
-            'visibility': 'visible'
+            'visibility': 'visible',
         },
         'paint': {
             'circle-radius': 3,
@@ -66,37 +69,40 @@ function addCerchio(filtro1, filtro2, colore, nome){
 
     map.setFilter( nome, ['==', filtro1, filtro2]);
 
-    //rimuovi visibility altri livelli
+    var a = map.getStyle().layers;
+    var b = a[a.length-2].id;
+console.log(b);
+
+map.removeLayer(b);
+
+
 
 };
 
+//  FINE FUNZIONE ACCENDI LIVELLO 1
 
+
+
+//  ATTIVA FUNZIONI QUANDO ID ATTIVO
 
 function setActiveChapter(chapterName) {
   if (chapterName === activeChapterName) return;
 
-
-
-
-console.log(activeChapterName);
-
   map.flyTo(chapters[chapterName]);
-
 
   document.getElementById(chapterName).setAttribute('class', 'active');
   document.getElementById(activeChapterName).setAttribute('class', '');
 
   activeChapterName = chapterName;
 
-if(activeChapterName== "geo1"){
-  addCerchio(chapters[chapterName].filtro1, chapters[chapterName].filtro2, chapters[chapterName].colore, chapters[chapterName].nome);
-};
-
-
+  if(activeChapterName.startsWith("geo")){
+    addCerchio(chapters[chapterName].filtro1, chapters[chapterName].filtro2, chapters[chapterName].colore, chapters[chapterName].nome);
+  };
 
 }
 
 
+//  CHECK SE ELEMENT E' SU SCHERMO
 
 function isElementOnScreen(id) {
   var element = document.getElementById(id);
