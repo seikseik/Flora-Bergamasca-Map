@@ -31,8 +31,10 @@ $(document).ready(function () {
    });
 
 
-let lista = document.querySelector(".dropdown-menu");
-lista.addEventListener("click", function(event){
- $("#features").load("./"+event.target.id+".html");
-$(side).scrollTop(0);
-});
+// let lista = document.querySelector(".dropdown-menu");
+//
+// lista.addEventListener("click", function(event){
+//  $("#features").load("./"+event.target.id+".html");
+// $(side).scrollTop(0);
+// // check();
+// });

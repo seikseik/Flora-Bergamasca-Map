@@ -1,6 +1,6 @@
 
-var titolo = "nome-completo";
-var nome = "Artemisia verlotiorum Lamotte";
+// var titolo = "nome-completo";
+// var nome = "Artemisia verlotiorum Lamotte";
 
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibWF0dGVvc2VpayIsImEiOiJjajQxbzYyamYwZ3BoMnFwYW14OWJ4YzFzIn0.ftiqjSyzdVDOaclBCDp4Gg';
@@ -23,34 +23,40 @@ map.on('load', function() {
     data: './json/decimali.geojson'
 });
 
-
-  // map.addLayer({
-  //       'id': 'prova',
-  //       'type': 'circle',
-  //       'source': 'segnalazioni',
-  //       'layout': {
-  //           'visibility': 'visible'
-  //       },
-  //       'paint': {
-  //           'circle-radius': 3,
-  //           'circle-color': 'red'
-  //       },
-  //   });
-  //
-  //   map.setFilter('prova', ['==', titolo, nome]);
-
-
   });
 
 
 
-//potrei provare ad aggiungere capitoli all'ogetto chapters per tutti i file,
-//solo che anzi che chiamare funzione flyto dovrebbe accendere un livello con stesso nome capitolo
+function addCerchio(filtro1, filtro2, colore, nome){
+  map.addLayer({
+        'id': nome,
+        'type': 'circle',
+        'source': 'segnalazioni',
+        'layout': {
+            'visibility': 'visible'
+        },
+        'paint': {
+            'circle-radius': 3,
+            'circle-color': colore
+        },
+    });
+
+    map.setFilter( nome, ['==', filtro1, filtro2]);
+
+    //rimuovi visibility altri livelli
+};
+
+
 
 var side = document.getElementById("mySidenav");
 
+
+
+
 // On every scroll event, check which element is on screen
+
 side.onscroll = function() {
+
   var chapterNames = Object.keys(chapters);
   for (var i = 0; i < chapterNames.length; i++) {
       var chapterName = chapterNames[i];
@@ -61,20 +67,18 @@ side.onscroll = function() {
   }
 };
 
-// imposta primo capitolo attivo e se corrisponde a quello sullo schermo lancia funzione flyTo
-// potrei sostituire par1 con variabile che trova primo id nell'html caricato
-// creare funzione turnOn(nomeLayer) che parte solo se i capitoli hanno proprietà specifica
-// i chapter con layer hanno proprietà che poi dovranno essere inserite nel addLayer di mapbox
-
-//var primoIdCapitolo;
 
 
-var activeChapterName = 'par1';
+var activeChapterName ="par1";
+
+
 function setActiveChapter(chapterName) {
   if (chapterName === activeChapterName) return;
 
   map.flyTo(chapters[chapterName]);
 
+
+addCerchio(chapters[chapterName].filtro1, chapters[chapterName].filtro2, chapters[chapterName].colore, chapters[chapterName].nome);
 
 
   document.getElementById(chapterName).setAttribute('class', 'active');
@@ -82,6 +86,7 @@ function setActiveChapter(chapterName) {
 
   activeChapterName = chapterName;
 }
+
 
 
 function isElementOnScreen(id) {
