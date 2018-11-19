@@ -1,7 +1,7 @@
 
 // var titolo = "nome-completo";
 // var nome = "Artemisia verlotiorum Lamotte";
-
+var activeChapterName ="par1";
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibWF0dGVvc2VpayIsImEiOiJjajQxbzYyamYwZ3BoMnFwYW14OWJ4YzFzIn0.ftiqjSyzdVDOaclBCDp4Gg';
 
@@ -27,25 +27,6 @@ map.on('load', function() {
 
 
 
-function addCerchio(filtro1, filtro2, colore, nome){
-  map.addLayer({
-        'id': nome,
-        'type': 'circle',
-        'source': 'segnalazioni',
-        'layout': {
-            'visibility': 'visible'
-        },
-        'paint': {
-            'circle-radius': 3,
-            'circle-color': colore
-        },
-    });
-
-    map.setFilter( nome, ['==', filtro1, filtro2]);
-
-    //rimuovi visibility altri livelli
-};
-
 
 
 var side = document.getElementById("mySidenav");
@@ -69,22 +50,50 @@ side.onscroll = function() {
 
 
 
-var activeChapterName ="par1";
+function addCerchio(filtro1, filtro2, colore, nome){
+  map.addLayer({
+        'id': nome,
+        'type': 'circle',
+        'source': 'segnalazioni',
+        'layout': {
+            'visibility': 'visible'
+        },
+        'paint': {
+            'circle-radius': 3,
+            'circle-color': colore
+        },
+    });
+
+    map.setFilter( nome, ['==', filtro1, filtro2]);
+
+    //rimuovi visibility altri livelli
+
+};
+
 
 
 function setActiveChapter(chapterName) {
   if (chapterName === activeChapterName) return;
 
+
+
+
+console.log(activeChapterName);
+
   map.flyTo(chapters[chapterName]);
-
-
-addCerchio(chapters[chapterName].filtro1, chapters[chapterName].filtro2, chapters[chapterName].colore, chapters[chapterName].nome);
 
 
   document.getElementById(chapterName).setAttribute('class', 'active');
   document.getElementById(activeChapterName).setAttribute('class', '');
 
   activeChapterName = chapterName;
+
+if(activeChapterName== "geo1"){
+  addCerchio(chapters[chapterName].filtro1, chapters[chapterName].filtro2, chapters[chapterName].colore, chapters[chapterName].nome);
+};
+
+
+
 }
 
 
