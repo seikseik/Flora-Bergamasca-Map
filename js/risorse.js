@@ -33,7 +33,7 @@ let chapters = {
   },
 
 
-  'geo1': {
+  'liv-geo1': {
     duration: 5000,
     center: [9.619577301514795, 45.71923272349616],
     zoom: 13.5,
@@ -42,10 +42,10 @@ let chapters = {
     filtro1 :"nome-completo",
     filtro2 : "Artemisia verlotiorum Lamotte",
     colore: "red",
-    nome: "prova",
+    nome: "liv-geo1",
 
   },
-  'geo2': {
+  'liv-geo2': {
     duration: 5000,
     center: [9.667469200116699, 45.72584639715879],
     zoom: 13,
@@ -53,10 +53,10 @@ let chapters = {
     filtro1 :"nome-completo",
     filtro2 : "Taraxacum officinale agg.",
     colore: "black",
-    nome: "prova2",
+    nome: "liv-geo2",
 
   },
-  'geo3': {
+  'liv-geo3': {
 
 
   }
