@@ -29,6 +29,9 @@ map.on('load', function() {
 var side = document.getElementById("mySidenav");
 side.onscroll = function() {
 
+  var listaPopup = document.getElementsByClassName("mapboxgl-popup");
+  console.log(listaPopup);
+
   // cambia il titolo del menu
 
   if (isElementOnScreenTitolo("primo")) {
@@ -42,10 +45,11 @@ side.onscroll = function() {
 
 var d = map.getStyle().layers;
 var c = d[d.length-1].id;
+
+
 if(activeChapterName !== c && c.startsWith("liv")){
   map.removeLayer(c);
 };
-
 
   var chapterNames = Object.keys(chapters);
 
@@ -79,11 +83,11 @@ map.addLayer({
            'fill-opacity': 0.8
        }
    });
-
 }
 
-//  INIZIO FUNZIONE ACCENDI LIVELLO 1
 
+
+//  INIZIO FUNZIONE ACCENDI LIVELLO 1
 function addCerchio(filtro1, filtro2, colore, nome){
 
 var capitoli = Object.keys(chapters);
@@ -107,6 +111,7 @@ var capitoli = Object.keys(chapters);
     map.setFilter( nome, ['==', filtro1, filtro2]);
 
 
+
 // POPUP
     map.on('click', function(e) {
       var features = map.queryRenderedFeatures(e.point, {
@@ -118,7 +123,6 @@ var capitoli = Object.keys(chapters);
       }
 
       var feature = features[0];
-
       var popup = new mapboxgl.Popup({ offset: [0, -15] })
         .setLngLat(feature.geometry.coordinates)
         .setHTML('<div id=\'popup\' class=\'popup\' style=\'z-index: 10;\'>' +
@@ -129,7 +133,11 @@ var capitoli = Object.keys(chapters);
                   '<li> <a target="_blank" href="https://www.actaplantarum.org/galleria_flora/galleria1.php?lista=0&mode=1&cat=24&cid=73&aid='+feature.properties['link']+'">Actaplantarum</a></li></ul></div>')
         .setLngLat(feature.geometry.coordinates)
         .addTo(map);
+
+        // console.log(popup);
     });
+
+
 
     // Change the cursor to a pointer when the mouse is over the places layer.
        map.on('mouseenter', nome, function () {
@@ -141,15 +149,28 @@ var capitoli = Object.keys(chapters);
            map.getCanvas().style.cursor = '';
        });
 
+
+
 // RIMUOVI LIVELLO PRECEDENTE
     var a = map.getStyle().layers;
     var b = a[a.length-2].id;
 map.removeLayer(b);
 
-};
+// RIMUOVI POP-UP
+
+// var listaPopup = document.getElementsByClassName("mapboxgl-popup");
+// console.log(listaPopup);
+
+// if(listaPopup.length >1){
+//   listaPopup.pop();
+// }
+
+};   //  FINE FUNZIONE ACCENDI LIVELLO 1
 
 
-//  FINE FUNZIONE ACCENDI LIVELLO 1
+
+
+
 
 //  ATTIVA FUNZIONI QUANDO ID ATTIVO
 

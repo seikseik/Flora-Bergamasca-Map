@@ -126,6 +126,13 @@ let chapters = {
     colore2: "orange",
     nome2: "Pontida",
 
+  },
+  'liv-geo4': {
+    duration: 5000,
+    center: [9.667469200116699, 45.72584639715879],
+    zoom: 13,
+    pitch: 20,
+
   }
 
 };
