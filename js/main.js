@@ -17,7 +17,7 @@ if (!mapboxgl.supported()) {
 }
 
 
-
+// load
 map.on('load', function() {
   map.addSource('segnalazioni', {
     type: 'geojson',
@@ -27,12 +27,12 @@ map.on('load', function() {
 
 
 
+
 // On every scroll event, check which element is on screen
 var side = document.getElementById("mySidenav");
 side.onscroll = function() {
 
   // cambia il titolo del menu
-
       if (isElementOnScreenTitolo("primo")) {
         $("#ringTabDrop").text("Bergamo");
       }else if(isElementOnScreenTitolo("secondo")){
@@ -44,10 +44,11 @@ side.onscroll = function() {
 
           var d = map.getStyle().layers;
           var c = d[d.length-1].id;
-
           if(activeChapterName !== c && c.startsWith("liv")){
             map.removeLayer(c);
           };
+
+
 
 
   var chapterNames = Object.keys(chapters);
@@ -84,6 +85,7 @@ map.addLayer({
            'fill-opacity': 0.8
        }
    });
+
 }
 
 
@@ -141,27 +143,22 @@ var capitoli = Object.keys(chapters);
                       listaP[i].parentNode.removeChild(listaP[i]);
                       }
                     }
-
-              });
-
+                 });
 
 
       // Change the cursor to a pointer when the mouse is over the places layer.
          map.on('mouseenter', nome, function () {
              map.getCanvas().style.cursor = 'pointer';
          });
-
          // Change it back to a pointer when it leaves.
          map.on('mouseleave', nome, function () {
              map.getCanvas().style.cursor = '';
          });
 
-
-  // RIMUOVI LIVELLO PRECEDENTE
-      var a = map.getStyle().layers;
-      var b = a[a.length-2].id;
-  map.removeLayer(b);
-
+    // RIMUOVI LIVELLO PRECEDENTE
+    var a = map.getStyle().layers;
+    var b = a[a.length-2].id;
+     map.removeLayer(b);
 
 };   //  FINE FUNZIONE ACCENDI LIVELLO 1
 
@@ -183,14 +180,27 @@ function setActiveChapter(chapterName) {
 
       activeChapterName = chapterName;
 
-  if(activeChapterName.startsWith("liv-geo")){
-    addCerchio(chapters[chapterName].filtro1, chapters[chapterName].filtro2, chapters[chapterName].colore, chapters[chapterName].nome);
-  };
+  // if(activeChapterName.startsWith("liv-geo")){
+  //   addCerchio(chapters[chapterName].filtro1, chapters[chapterName].filtro2, chapters[chapterName].colore, chapters[chapterName].nome);
+  // };
 
-  if(activeChapterName.startsWith("liv-geo3")){
+  if(activeChapterName.startsWith("liv-geo")){
     addPoligono(chapters[chapterName].nome2,chapters[chapterName].coordinate, chapters[chapterName].colore2);
   };
-}
+
+  if(activeChapterName.startsWith("liv-geo")== false){
+    let l = map.getStyle().layers;
+      for(i = 0; i< l.length; i++){
+        if(l[i].id.startsWith("geo")){
+          map.removeLayer(l[i].id);
+          map.removeSource(l[i].id);
+        }
+      }
+    }
+
+  };
+
+
 
 
 
