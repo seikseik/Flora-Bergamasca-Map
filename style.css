@@ -213,9 +213,9 @@ section.active {
     opacity: 1;
 }
 
-section:first-child {
+/* section:first-child {
     margin-top: 50px;
-}
+} */
 
 /* section:last-child {
     margin-bottom: 500px;

@@ -16,7 +16,6 @@ if (!mapboxgl.supported()) {
 });
 }
 
-
 // load
 map.on('load', function() {
   map.addSource('segnalazioni', {
@@ -37,6 +36,12 @@ side.onscroll = function() {
         $("#ringTabDrop").text("Bergamo");
       }else if(isElementOnScreenTitolo("secondo")){
           $("#ringTabDrop").text("Geologia e clima");
+      }else if(isElementOnScreenTitolo("terzo")){
+          $("#ringTabDrop").text("Flora di Bergamo");
+      }else if(isElementOnScreenTitolo("quarto")){
+          $("#ringTabDrop").text("Tipi Biologici");
+      }else if(isElementOnScreenTitolo("quinto")){
+          $("#ringTabDrop").text("Corologia");
       }
 
   // On every scroll event, check se il livello acceso corrisponde al capitolo acceso
@@ -47,8 +52,6 @@ side.onscroll = function() {
           if(activeChapterName !== c && c.startsWith("liv")){
             map.removeLayer(c);
           };
-
-
 
 
   var chapterNames = Object.keys(chapters);
@@ -82,7 +85,7 @@ map.addLayer({
        'layout': {},
        'paint': {
            'fill-color': colore2,
-           'fill-opacity': 0.8
+           'fill-opacity': 0.6
        }
    });
 
@@ -165,6 +168,63 @@ var capitoli = Object.keys(chapters);
 
 
 
+function addHeat(nome2, filtro1, filtro2,){
+var capitoli2 = Object.keys(chapters);
+
+    map.addLayer({
+          'id': nome2,
+          'type': 'heatmap',
+          'source': 'segnalazioni',
+          'layout': {
+              'visibility': 'visible',
+          },
+              'paint':{
+
+    'heatmap-intensity': {
+      stops: [
+        [10, 0.5],
+        [14, 1]
+      ]
+    },
+    "heatmap-color": [
+                "interpolate",
+                ["linear"],
+                ["heatmap-density"],
+                0, "rgba(33,102,172,0)",
+                0.2, "rgb(103,169,207)",
+                0.4, "rgb(209,229,240)",
+                0.6, "rgb(253,219,199)",
+                0.8, "rgb(239,138,98)",
+                1, "rgb(178,24,43)"
+            ],
+    'heatmap-radius': {
+      stops: [
+        [11, 5],
+        [15, 7]
+      ]
+    },
+    'heatmap-opacity': {
+      default: 1,
+      stops: [
+        [14, 0.8],
+        [15, 0]
+      ]
+    },
+  }
+
+  });
+
+  map.setFilter( nome2, ['==', filtro1, filtro2]);
+
+    // RIMUOVI LIVELLO PRECEDENTE
+    // var g = map.getStyle().layers;
+    // var h = g[g.length-2].id;
+    //  map.removeLayer(h);
+
+};   //  FINE HEATMAP
+
+
+
 
 
 
@@ -180,9 +240,20 @@ function setActiveChapter(chapterName) {
 
       activeChapterName = chapterName;
 
-  // if(activeChapterName.startsWith("liv-geo")){
-  //   addCerchio(chapters[chapterName].filtro1, chapters[chapterName].filtro2, chapters[chapterName].colore, chapters[chapterName].nome);
-  // };
+
+  if(activeChapterName.startsWith("liv-bg")){
+    addHeat(chapters[chapterName].nome2,chapters[chapterName].filtro1, chapters[chapterName].filtro2);
+  };
+
+  if(activeChapterName.startsWith("liv-cor")){
+    addCerchio(chapters[chapterName].filtro1, chapters[chapterName].filtro2,chapters[chapterName].colore, chapters[chapterName].nome);
+  };
+
+  if(activeChapterName.startsWith("liv-bio")){
+    addCerchio(chapters[chapterName].filtro1, chapters[chapterName].filtro2,chapters[chapterName].colore, chapters[chapterName].nome);
+    addHeat(chapters[chapterName].nome2,chapters[chapterName].filtro1, chapters[chapterName].filtro2);
+
+  };
 
   if(activeChapterName.startsWith("liv-geo")){
     addPoligono(chapters[chapterName].nome2,chapters[chapterName].coordinate, chapters[chapterName].colore2);
