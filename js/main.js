@@ -39,19 +39,46 @@ side.onscroll = function() {
       }else if(isElementOnScreenTitolo("terzo")){
           $("#ringTabDrop").text("Flora di Bergamo");
       }else if(isElementOnScreenTitolo("quarto")){
-          $("#ringTabDrop").text("Tipi Biologici");
+          $("#ringTabDrop").text("Forme Biologiche");
       }else if(isElementOnScreenTitolo("quinto")){
-          $("#ringTabDrop").text("Corologia");
+          $("#ringTabDrop").text("I Corotipi");
       }
 
   // On every scroll event, check se il livello acceso corrisponde al capitolo acceso
   // altrimenti rimuove l'ultimo livello creato
+  // Il problema è rimuovere due livelli insieme:
 
           var d = map.getStyle().layers;
           var c = d[d.length-1].id;
+          var tipo =d[d.length-1].type;
+          var e = activeChapterName + "h";
+          var h = c - "h";
+          var f = d[d.length-2].id;
+
+          // console.log(tipo);
+          console.log(c);
+          console.log(h);
+
+          // if(c == e && activeChapterName !== h ){
+          //   map.removeLayer(e);
+          // }
+
+
+
+          // if(activeChapterName.startsWith("liv-bio") && tipo =="heatmap"){
+          //   map.removeLayer(c);
+          // }
+
           if(activeChapterName !== c && c.startsWith("liv")){
             map.removeLayer(c);
-          };
+          }
+
+
+
+          // if(activeChapterName !== c && c.startsWith("liv")){
+          //   map.removeLayer(c);
+          // }
+
 
 
   var chapterNames = Object.keys(chapters);
@@ -106,9 +133,11 @@ var capitoli = Object.keys(chapters);
           },
           'paint': {
               'circle-radius': {
-                  'base': 1.75,
-                  'stops': [[12, 2], [22, 180]]
+                  'base': 2,
+                  'stops': [[12, 2.3], [22, 180]]
               },
+              'circle-stroke-color': 'white',
+              'circle-stroke-width': 0.2,
               'circle-color': colore
           },
       });
@@ -191,11 +220,11 @@ var capitoli2 = Object.keys(chapters);
                 ["linear"],
                 ["heatmap-density"],
                 0, "rgba(33,102,172,0)",
-                0.2, "rgb(103,169,207)",
-                0.4, "rgb(209,229,240)",
-                0.6, "rgb(253,219,199)",
-                0.8, "rgb(239,138,98)",
-                1, "rgb(178,24,43)"
+                  0.2, "rgb(103,169,207)",
+                  0.4, "rgb(209,229,240)",
+                  0.6, "rgb(253,219,199)",
+                  0.8, "#F0BA51",
+                  1, "#F65900"
             ],
     'heatmap-radius': {
       stops: [

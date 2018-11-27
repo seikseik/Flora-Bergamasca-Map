@@ -223,9 +223,24 @@ section.active {
 
 section h2{
   font-family: 'Roboto', sans-serif;
-  font-weight: bold;
+  font-weight: 500;
   font-size:15px;
   margin-bottom: 10px;
+}
+
+section h3{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size:15px;
+  margin-bottom: 10px;
+}
+
+section img{
+  width:100%;
+  height: 250px;
+object-fit: cover;
+  max-width:500px;
+  margin-top: 30px;
 }
 
 
@@ -239,8 +254,11 @@ section h2{
 
 .mapboxgl-popup-content {
     position: relative;
-    background: #fff;
+    background: #F9F9F9;
     border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #979797;
     box-shadow: none;
     padding: 10px 10px 15px;
     pointer-events: auto;

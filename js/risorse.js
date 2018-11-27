@@ -1,3 +1,5 @@
+let col = "#FF4F05"
+// let col = "#585656"
 
 
 let chapters = {
@@ -397,7 +399,7 @@ let chapters = {
 
 // TIPI BIOLOGICI
 
-  'liv-bio1': {
+  'liv-bb': {
     duration: 5000,
     center: [9.627021090188578, 45.69574912033943],
     zoom: 12,
@@ -406,31 +408,33 @@ let chapters = {
   'liv-bio2': {
     filtro1 :"forma-bio-semp",
     filtro2 : "emicriptofita",
-    colore: "red",
+    colore: col,
     nome: "liv-bio2",
-    nome2:"liv-bio2.2",
+    nome2:"liv-bio2h",
 },
 
   'liv-bio3': {
 
     filtro1 :"forma-bio-semp",
     filtro2 : "terofita",
-    colore: "red",
+    colore: col,
     nome: "liv-bio3",
+    nome2:"liv-bio3h",
 },
 'liv-bio4': {
 
   filtro1 :"forma-bio-semp",
   filtro2 : "fanerofita",
-  colore: "red",
+  colore: col,
   nome: "liv-bio4",
+  nome2:"liv-bio4h",
 },
 
 'liv-bio5': {
 
   filtro1 :"forma-bio-semp",
   filtro2 : "geofita",
-  colore: "red",
+  colore: col,
   nome: "liv-bio5",
 },
 
@@ -438,14 +442,14 @@ let chapters = {
 
   filtro1 :"forma-bio-semp",
   filtro2 : "camefita",
-  colore: "red",
+  colore: col,
   nome: "liv-bio6",
 },
 
 'liv-bio7': {
   filtro1 :"forma-bio-semp",
   filtro2 : "idrofita",
-  colore: "red",
+  colore: col,
   nome: "liv-bio7",
 },
 
@@ -453,13 +457,9 @@ let chapters = {
 'liv-bio8': {
   filtro1 :"forma-bio-semp",
   filtro2 : "elofita",
-  colore: "red",
+  colore: col,
   nome: "liv-bio8",
 },
-
-
-
-
 
 
 
@@ -480,65 +480,51 @@ let chapters = {
   'liv-cor2': {
     filtro1 :"corotipi",
     filtro2 : "Eurasiatico",
-    colore: "red",
+    colore: col,
     nome: "liv-cor2",
 },
 
-  'liv-cor2.2': {
-    filtro1 :"corotipi",
-    filtro2 : "Eurasiatico",
-    colore: "red",
-    nome2: "liv-cor2.2",
-  },
-
-
 
   'liv-cor3': {
-
     filtro1 :"corotipi",
     filtro2 : "Europeo",
-    colore: "red",
+    colore: col,
     nome: "liv-cor3",
 
 },
 
 'liv-cor4': {
-
   filtro1 :"corotipi",
   filtro2 : "Mediterraneo s.l.",
-  colore: "red",
+  colore: col,
   nome: "liv-cor4",
 },
 
 'liv-cor5': {
-
   filtro1 :"corotipi",
   filtro2 : "Eurosibirico",
-  colore: "red",
+  colore: col,
   nome: "liv-cor5",
 },
 
 'liv-cor6': {
-
   filtro1 :"corotipi",
   filtro2 : "Circumboreale",
-  colore: "red",
+  colore: col,
   nome: "liv-cor6",
 },
 
 'liv-cor7': {
-
   filtro1 :"corotipi",
   filtro2 : "Europeo-montano",
-  colore: "red",
+  colore: col,
   nome: "liv-cor7",
 },
 
 'liv-cor8': {
-
   filtro1 :"corotipi",
   filtro2 : "Cosmopolita",
-  colore: "red",
+  colore: col,
   nome: "liv-cor8",
 },
 
