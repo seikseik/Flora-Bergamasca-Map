@@ -211,6 +211,7 @@ section {
 
 section.active {
     opacity: 1;
+
 }
 
 /* section:first-child {

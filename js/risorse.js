@@ -463,7 +463,6 @@ let chapters = {
 
 
 
-
 // COROLOGIA
 
   'liv-cor1': {
@@ -527,5 +526,80 @@ let chapters = {
   colore: col,
   nome: "liv-cor8",
 },
+
+
+
+// ALLERGOFITE
+
+
+  'liv-pol1': {
+    duration: 5000,
+    center: [9.627021090188578, 45.69574912033943],
+    zoom: 12,
+    nome: "liv-pol1",
+},
+
+
+  'liv-pol2': {
+    filtro1 :"corotipi",
+    filtro2 : "Europeo",
+    colore: col,
+    nome: "liv-pol2",
+
+},
+
+'liv-pol3': {
+  filtro1 :"corotipi",
+  filtro2 : "Mediterraneo s.l.",
+  colore: col,
+  nome: "liv-pol3",
+},
+
+'liv-pol4': {
+  filtro1 :"corotipi",
+  filtro2 : "Eurosibirico",
+  colore: col,
+  nome: "liv-pol4",
+},
+
+'liv-pol5': {
+  filtro1 :"corotipi",
+  filtro2 : "Circumboreale",
+  colore: col,
+  nome: "liv-pol5",
+},
+
+'liv-pol6': {
+  filtro1 :"corotipi",
+  filtro2 : "Europeo-montano",
+  colore: col,
+  nome: "liv-pol6",
+},
+
+'liv-pol7': {
+  filtro1 :"corotipi",
+  filtro2 : "Cosmopolita",
+  colore: col,
+  nome: "liv-pol7",
+},
+'liv-pol8': {
+  filtro1 :"corotipi",
+  filtro2 : "Cosmopolita",
+  colore: col,
+  nome: "liv-pol8",
+},
+'liv-pol9': {
+  filtro1 :"corotipi",
+  filtro2 : "Cosmopolita",
+  colore: col,
+  nome: "liv-pol9",
+},
+'liv-pol10': {
+  filtro1 :"corotipi",
+  filtro2 : "Cosmopolita",
+  colore: col,
+  nome: "liv-pol10",
+},
+
 
 };

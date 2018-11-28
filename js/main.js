@@ -16,11 +16,12 @@ if (!mapboxgl.supported()) {
 });
 }
 
-// load
+
+
 map.on('load', function() {
   map.addSource('segnalazioni', {
     type: 'geojson',
-    data: './json/decimali.geojson'
+    data: './json/segnalazioni.geojson'
   });
 });
 
@@ -42,7 +43,8 @@ side.onscroll = function() {
           $("#ringTabDrop").text("Forme Biologiche");
       }else if(isElementOnScreenTitolo("quinto")){
           $("#ringTabDrop").text("I Corotipi");
-      }
+      }else if(isElementOnScreenTitolo("sesto")){
+          $("#ringTabDrop").text("Specie Allergeniche");}
 
   // On every scroll event, check se il livello acceso corrisponde al capitolo acceso
   // altrimenti rimuove l'ultimo livello creato
@@ -162,6 +164,7 @@ var capitoli = Object.keys(chapters);
                   .setHTML('<div id=\'popup\' class=\'popup\' style=\'z-index: 10;\'>' +
                             '<ul>' +
                             '<li> Nome: ' + feature.properties['nome-completo'] + ' </li>' +
+                            '<li> Famiglia: ' + feature.properties['famiglia'] + ' </li>' +
                             '<li> Corotipo:  ' + feature.properties['corotipi'] + ' </li>' +
                             '<li> Forma biologica:  ' + feature.properties['forma-bio-semp'] + ' </li>' +
                             '<li> <a target="_blank" href="https://www.actaplantarum.org/galleria_flora/galleria1.php?lista=0&mode=1&cat=24&cid=73&aid='+feature.properties['link']+'">Actaplantarum</a></li></ul></div>')
