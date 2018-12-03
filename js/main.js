@@ -17,14 +17,12 @@ if (!mapboxgl.supported()) {
 }
 
 
-
 map.on('load', function() {
   map.addSource('segnalazioni', {
     type: 'geojson',
     data: './json/segnalazioni.geojson'
   });
 });
-
 
 
 
@@ -76,11 +74,9 @@ side.onscroll = function() {
           }
 
 
-
           // if(activeChapterName !== c && c.startsWith("liv")){
           //   map.removeLayer(c);
           // }
-
 
 
   var chapterNames = Object.keys(chapters);
@@ -114,12 +110,15 @@ map.addLayer({
        'layout': {},
        'paint': {
            'fill-color': colore2,
-           'fill-opacity': 0.6
+           // 'fill-color': "black",
+           'fill-opacity': 0.6,
+           // 'fill-outline-color': 'black',
+           // 'fill-pattern': 'agricoltura'
+
        }
    });
 
 }
-
 
 
 //  INIZIO FUNZIONE ACCENDI LIVELLO 1
@@ -145,7 +144,6 @@ var capitoli = Object.keys(chapters);
       });
 
       map.setFilter( nome, ['==', filtro1, filtro2]);
-
 
 
           // POPUP
@@ -256,7 +254,83 @@ var capitoli2 = Object.keys(chapters);
 };   //  FINE HEATMAP
 
 
+//  INIZIO FUNZIONE ACCENDI LIVELLO 1
+function addPolline(filtro1, filtro2, filtro3, colore, nome){
+var capitoli = Object.keys(chapters);
 
+    map.addLayer({
+          'id': nome,
+          'type': 'circle',
+          'source': 'segnalazioni',
+          'layout': {
+              'visibility': 'visible',
+          },
+          'paint': {
+              'circle-radius': {
+                  'base': 2,
+                  'stops': [[12, 2.3], [22, 180]]
+              },
+              'circle-stroke-color': 'white',
+              'circle-stroke-width': 0.2,
+              'circle-color': colore
+          },
+      });
+
+      map.setFilter( nome, [
+    "all",
+    ["==", "ALLERGENICA", "SI"],
+    ["in",filtro1, filtro2, filtro3]
+]);
+
+
+          // POPUP
+              map.on('click', function(e) {
+                var features = map.queryRenderedFeatures(e.point, {
+                  layers: [nome] // replace this with the name of the layer
+                });
+
+                if (!features.length) {
+                  return;
+                }
+
+                var feature = features[0];
+                var popup = new mapboxgl.Popup({ offset: [0, -15] })
+                  .setLngLat(feature.geometry.coordinates)
+                  .setHTML('<div id=\'popup\' class=\'popup\' style=\'z-index: 10;\'>' +
+                            '<ul>' +
+                            '<li> Nome: ' + feature.properties['nome-completo'] + ' </li>' +
+                            '<li> Famiglia: ' + feature.properties['famiglia'] + ' </li>' +
+                            '<li> Corotipo:  ' + feature.properties['corotipi'] + ' </li>' +
+                            '<li> Forma biologica:  ' + feature.properties['forma-bio-semp'] + ' </li>' +
+                            '<li> <a target="_blank" href="https://www.actaplantarum.org/galleria_flora/galleria1.php?lista=0&mode=1&cat=24&cid=73&aid='+feature.properties['link']+'">Actaplantarum</a></li></ul></div>')
+                  .setLngLat(feature.geometry.coordinates)
+                  .addTo(map);
+
+                  // remove popup
+                  let listaP = document.getElementsByClassName("mapboxgl-popup");
+                  if(popup.isOpen() && listaP.length > 1){
+                    for (var i = listaP.length - 1; i >= 1; --i) {
+                      listaP[i].parentNode.removeChild(listaP[i]);
+                      }
+                    }
+                 });
+
+
+      // Change the cursor to a pointer when the mouse is over the places layer.
+         map.on('mouseenter', nome, function () {
+             map.getCanvas().style.cursor = 'pointer';
+         });
+         // Change it back to a pointer when it leaves.
+         map.on('mouseleave', nome, function () {
+             map.getCanvas().style.cursor = '';
+         });
+
+    // RIMUOVI LIVELLO PRECEDENTE
+    var a = map.getStyle().layers;
+    var b = a[a.length-2].id;
+     map.removeLayer(b);
+
+};
 
 
 
@@ -291,6 +365,10 @@ function setActiveChapter(chapterName) {
     addPoligono(chapters[chapterName].nome2,chapters[chapterName].coordinate, chapters[chapterName].colore2);
   };
 
+  if(activeChapterName.startsWith("liv-pol")){
+    addPolline(chapters[chapterName].filtro1, chapters[chapterName].filtro2, chapters[chapterName].filtro3, chapters[chapterName].colore, chapters[chapterName].nome);
+  };
+
   if(activeChapterName.startsWith("liv-geo")== false){
     let l = map.getStyle().layers;
       for(i = 0; i< l.length; i++){
@@ -302,9 +380,6 @@ function setActiveChapter(chapterName) {
     }
 
   };
-
-
-
 
 
 //  CHECK SE ELEMENT E' SU SCHERMO
@@ -320,3 +395,45 @@ function isElementOnScreenTitolo(id) {
   var bounds2 = element2.getBoundingClientRect();
   return bounds2.top < 100 && bounds2.bottom > 100;
 }
+
+
+
+let fb = ['liv-bio2','liv-bio3','liv-bio4','liv-bio5','liv-bio6'];
+//  LEGENDA
+document.querySelector(".lista-legend").addEventListener("click", function(e){
+
+if(e.target.classList.contains("spento")){
+
+  console.log("ciao");
+  e.target.classList.remove("spento");
+  e.target.classList.add("active");
+  addCerchio(chapters[fb[e.target.id]].filtro1, chapters[fb[e.target.id]].filtro2,chapters[fb[e.target.id]].colore, chapters[fb[e.target.id]].nome);
+
+} else if(e.target.classList.contains("active")){
+  e.target.classList.remove("active");
+  e.target.classList.add("spento");
+  map.removeLayer(fb[e.target.id]);
+
+}
+
+})
+
+
+
+// document.querySelector(".lista-legend").addEventListener("click", function(e){
+//
+// if(e.target.id =="fb1" && e.target.classList.contains("spento")){
+//
+//   console.log("ciao");
+//   e.target.classList.remove("spento");
+//   e.target.classList.add("active");
+//   addCerchio(chapters['liv-bio2'].filtro1, chapters['liv-bio2'].filtro2,chapters['liv-bio2'].colore, chapters['liv-bio2'].nome);
+//
+// } else if(e.target.classList.contains("active")){
+//
+//   e.target.classList.add("spento");
+//   map.removeLayer('liv-bio2');
+//
+// }
+//
+// })

@@ -541,63 +541,72 @@ let chapters = {
 
 
   'liv-pol2': {
-    filtro1 :"corotipi",
-    filtro2 : "Europeo",
+    filtro1 :"famiglia",
+    filtro2 : "amaranthaceae",
+    filtro3: "chenopodiaceae",
     colore: col,
     nome: "liv-pol2",
 
 },
 
 'liv-pol3': {
-  filtro1 :"corotipi",
-  filtro2 : "Mediterraneo s.l.",
+  filtro1 :"famiglia",
+  filtro2 : "compositae",
+  filtro3:"",
   colore: col,
   nome: "liv-pol3",
 },
 
 'liv-pol4': {
-  filtro1 :"corotipi",
-  filtro2 : "Eurosibirico",
+  filtro1 :"famiglia",
+  filtro2 : "betulaceae",
+  filtro3:"",
   colore: col,
   nome: "liv-pol4",
 },
 
 'liv-pol5': {
-  filtro1 :"corotipi",
-  filtro2 : "Circumboreale",
+  filtro1 :"famiglia",
+  filtro2 : "cupressaceae",
+  filtro3: "taxaceae",
   colore: col,
   nome: "liv-pol5",
 },
 
 'liv-pol6': {
-  filtro1 :"corotipi",
-  filtro2 : "Europeo-montano",
+  filtro1 :"famiglia",
+  filtro2 : "fagaceae",
+  filtro3:"",
   colore: col,
   nome: "liv-pol6",
 },
 
 'liv-pol7': {
-  filtro1 :"corotipi",
-  filtro2 : "Cosmopolita",
+  filtro1 :"famiglia",
+  filtro2 : "oleaceae",
+  filtro3:"",
   colore: col,
   nome: "liv-pol7",
 },
 'liv-pol8': {
-  filtro1 :"corotipi",
-  filtro2 : "Cosmopolita",
+  filtro1 :"famiglia",
+  filtro2 : "graminaceae",
+  filtro3:"",
   colore: col,
   nome: "liv-pol8",
 },
 'liv-pol9': {
-  filtro1 :"corotipi",
-  filtro2 : "Cosmopolita",
+  filtro1 :"famiglia",
+  filtro2 : "urticaceae",
+  filtro3: "moraceae",
+  filtro3:"",
   colore: col,
   nome: "liv-pol9",
 },
 'liv-pol10': {
-  filtro1 :"corotipi",
-  filtro2 : "Cosmopolita",
-  colore: col,
+  // filtro1 :"famiglia",
+  // filtro2 : "stagioni",
+  // colore: col,
   nome: "liv-pol10",
 },
 
