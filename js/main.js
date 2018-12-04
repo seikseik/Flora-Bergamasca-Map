@@ -248,11 +248,6 @@ var capitoli2 = Object.keys(chapters);
 
   map.setFilter( nome2, ['==', filtro1, filtro2]);
 
-    // RIMUOVI LIVELLO PRECEDENTE
-    // var g = map.getStyle().layers;
-    // var h = g[g.length-2].id;
-    //  map.removeLayer(h);
-
 };   //  FINE HEATMAP
 
 
@@ -353,6 +348,7 @@ var capitoli = Object.keys(chapters);
               },
               'circle-stroke-color': 'white',
               'circle-stroke-width': 0.2,
+              'circle-opacity': 0.3,
               'circle-color': colore
           },
       });

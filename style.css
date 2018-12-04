@@ -321,7 +321,7 @@ object-fit: cover;
 #openLegend{
   position: absolute;
   right: 10px;
-  bottom: 50px;
+  bottom: 40px;
 }
 
 
@@ -330,14 +330,14 @@ object-fit: cover;
        position: absolute;
        z-index: 1;
        bottom: 200px;
-       right: -230px;
+       right: -250px;
        border-radius: 3px;
-       width: 230px;
+       width: 250px;
        height: 300px;
        overflow-y: scroll;
        border: 1px solid rgba(0,0,0,0.2);
        font-family: 'Roboto', sans-serif;
-       transition-duration: .3s;
+       transition-duration: .4s;
    }
 
 #legend ul{
@@ -354,7 +354,7 @@ list-style-type: none;
   padding: 0;
   padding: 10px;
   text-decoration: none;
-  border-bottom: 1px solid rgba(0,0,0,0.25);
+  border-bottom: 1px solid rgba(0,0,0,0.2);
   text-align: center;
 }
 
@@ -371,6 +371,8 @@ list-style-type: none;
        text-decoration: none;
        border-bottom: 1px solid rgba(0,0,0,0.25);
        text-align: right;
+       vertical-align: baseline;
+
    }
 
    #legend li:last-child {
@@ -378,35 +380,71 @@ list-style-type: none;
    }
 
    #legend a:hover {
-       background-color: lightgrey;
+       background-color: #E8E8E8;
        color: #404040;
    }
 
    #legend a.active {
-       background-color: grey;
-       color: #ffffff;
+       background-color: #D8D8D8;
+       color: #303030;
    }
 
    #legend a.active:hover {
-       background: grey;
+       background: #D8D8D8;
    }
-
-   /* #legend a:before {
-       content: "→";
-   } */
 
 
 #legend span{
-  width:13px;
-  height:13px;
+  width:11px;
+  height:11px;
   display:inline-block;
-  vertical-align: baseline;
   float:left;
 }
 
-.st3{fill:lightgrey;}
+/* icona e animazione */
 
 .legenda-icon{
-  fill:darkgrey;
-  max-height:60%;
+  fill:#383838;
+  cursor: pointer;
+}
+
+.legenda-icon:hover{
+
+}
+
+
+.liv1{
+  fill:#BEBEBE;
+  stroke:#404040	;
+  stroke-width:2;
+  transition-duration: .1s;
+  transition-timing-function: ease-out;
+}
+
+.liv2{
+  fill:#BEBEBE;
+  stroke:#404040	;
+  stroke-width:2;
+}
+
+
+.liv3{
+  fill:#BEBEBE;
+  stroke:#404040	;
+  stroke-width:2;
+  transition-duration: .1s;
+  transition-timing-function: ease-out;
+
+}
+
+.liv1a{
+  transform: translate(0,3px);
+  transition-duration: .1s;
+  transition-timing-function: ease-out;
+}
+
+.liv3a{
+  transform: translate(0,-3px);
+  transition-duration: .1s;
+  transition-timing-function: ease-out;
 }
