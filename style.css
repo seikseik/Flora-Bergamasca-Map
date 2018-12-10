@@ -113,6 +113,19 @@ hr{
 .st0{stroke:grey; stroke-width:1;}
 
 
+
+@media only screen and (max-width: 600px) {
+  .attivo{
+    display:none;
+    }
+    .icona {
+      display:none;
+    }
+    #apri{
+      display:none;
+    }
+}
+
 /* DROPDOWN MENU */
 
 .nav-tabs .dropdown-menu {
@@ -245,7 +258,31 @@ section img{
 object-fit: cover;
   max-width:500px;
   margin-top: 40px;
+  padding:0px;
 }
+
+/* DIDASCALIE SEZIONI */
+
+.didaImg{
+  display: flex;
+}
+
+.dida{
+  display: content;
+  margin-top:40px;
+  width:auto;
+
+}
+
+.dida p{
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  width:200px;
+  margin-top:251px;
+  color:#404040;
+}
+
 
 
 /* Pop-up */
@@ -315,7 +352,6 @@ object-fit: cover;
 ::-webkit-scrollbar-thumb {
   background-color: darkgrey;
 }
-
 
 
 
@@ -403,31 +439,32 @@ list-style-type: none;
   height:11px;
   display:inline-block;
   float:left;
+  border-radius: 50%;
 }
 
+
+
 .filter-ctrl {
-        /* position: absolute; */
-        /* top: 10px;
-        right: 10px; */
+
         padding:5px;
         margin:auto;
-        margin-bottom:15px;
+        margin-bottom:13px;
         z-index: 1;
         width: 100%;
     }
 
     .filter-ctrl input[type=text] {
-        font: 15px 'Roboto', Arial, Helvetica, sans-serif;
+        font: 13px 'Roboto', Arial, Helvetica, sans-serif;
+        border: 1px solid black;
         width: 100%;
         border: 0;
-        /* background-color: #fff; */
+        background-color: #fff;
         height: 40px;
         margin: 0;
-        color: rgba(0,0,0,.5);
         padding: 10px;
-        /* box-shadow: 0 0 0 2px rgba(0,0,0,0.1); */
-        border-radius: 2px;
+        outline: none;
     }
+
 
 
 /* icona e animazione */
@@ -438,7 +475,6 @@ list-style-type: none;
 }
 
 .legenda-icon:hover{
-
 }
 
 
@@ -476,23 +512,4 @@ list-style-type: none;
   transform: translate(0,-3px);
   transition-duration: .1s;
   transition-timing-function: ease-out;
-}
-
-
-
-
-.didaImg{
-  display: flex;
-}
-.dida{
-  display: content;
-  margin-top:40px;
-  width:auto;
-}
-
-.dida p{
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  width:300px;
-  color:#404040;
 }

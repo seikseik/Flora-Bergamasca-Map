@@ -476,7 +476,7 @@ function isElementOnScreenTitolo(id) {
 
 
 let lista = ['liv-bio2','liv-bio3','liv-bio4','liv-bio5','liv-bio6','liv-bio7','liv-bio8','liv-cor2','liv-cor3','liv-cor4','liv-cor5','liv-cor6','liv-cor7','liv-cor8'];
-let color = ['red','green','blue','yellow','orange','black','grey','red','green','blue','yellow','orange','black','grey'];
+let color = ['#FF007F','#004FFF','#28965A','#FF9000','#99007F','#00D300','#FF1C1C','#FF007F','#004FFF','#28965A','#FF9000','#99007F','#00D300','#FF1C1C'];
 //  LEGENDA
 document.querySelector(".lista-legend").addEventListener("click", function(e){
 
@@ -494,6 +494,7 @@ if(e.target.classList.contains("spento")){
 }
 });
 
+//  aggiunta colori legenda
 
 let listaLi= document.querySelectorAll(".col-li")
 console.log(listaLi);
@@ -502,6 +503,12 @@ let aa = listaLi[i];
 let bb = color[i];
 aa.style.backgroundColor = color[i];
 }
+
+
+
+
+
+
 
 
 
