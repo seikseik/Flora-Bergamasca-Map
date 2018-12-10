@@ -158,6 +158,8 @@ var capitoli = Object.keys(chapters);
                   return;
                 }
 
+
+
                 var feature = features[0];
                 var popup = new mapboxgl.Popup({ offset: [0, -15] })
                   .setLngLat(feature.geometry.coordinates)
@@ -344,12 +346,13 @@ var capitoli = Object.keys(chapters);
           'paint': {
               'circle-radius': {
                   'base': 2,
-                  'stops': [[12, 2.3], [22, 180]]
+                  'stops': [[12, 2.5], [22, 200]]
               },
               'circle-stroke-color': 'white',
               'circle-stroke-width': 0.2,
-              'circle-opacity': 0.3,
-              'circle-color': colore
+              'circle-color': colore,
+              'circle-opacity': 0.8
+              // 'circle-blur': 0.2
           },
       });
 

@@ -21,7 +21,7 @@ hr{
 
 
 .slide-over .slideover-content {
-  display: block;
+  /* display: block; */
   width: 60%;
   height: 100%;
   overflow: scroll;
@@ -222,6 +222,8 @@ section.active {
     margin-bottom: 500px;
 } */
 
+
+
 section h2{
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
@@ -241,16 +243,17 @@ section img{
   height: 250px;
 object-fit: cover;
   max-width:500px;
-  margin-top: 30px;
+  margin-top: 40px;
 }
 
 
 /* Pop-up */
 
 .mapboxgl-popup {
-  max-width: 400px;
+  width: 280px;
   font-family: 'Roboto', sans-serif;
-  font-size: 12px;
+  font-size: 14px;
+  line-height: 25px;
 }
 
 .mapboxgl-popup-content {
@@ -333,7 +336,7 @@ object-fit: cover;
        right: -250px;
        border-radius: 3px;
        width: 250px;
-       height: 300px;
+       max-height: 300px;
        overflow-y: scroll;
        border: 1px solid rgba(0,0,0,0.2);
        font-family: 'Roboto', sans-serif;
@@ -354,7 +357,7 @@ list-style-type: none;
   padding: 0;
   padding: 10px;
   text-decoration: none;
-  border-bottom: 1px solid rgba(0,0,0,0.2);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
   text-align: center;
 }
 
@@ -369,7 +372,7 @@ list-style-type: none;
        padding: 15px;
        padding-right: 20px;
        text-decoration: none;
-       border-bottom: 1px solid rgba(0,0,0,0.25);
+       border-bottom: 1px solid rgba(0,0,0,0.1);
        text-align: right;
        vertical-align: baseline;
 
@@ -447,4 +450,20 @@ list-style-type: none;
   transform: translate(0,-3px);
   transition-duration: .1s;
   transition-timing-function: ease-out;
+}
+
+
+
+
+.didaImg{
+  display: flex;
+}
+.dida{
+  margin-top:40px;
+}
+
+.dida p{
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  position:absolute;
 }
