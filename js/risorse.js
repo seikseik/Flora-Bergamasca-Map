@@ -410,7 +410,7 @@ let chapters = {
     filtro2 : "emicriptofita",
     colore: col,
     nome: "liv-bio2",
-    nome2:"liv-bio2h",
+    // nome2:"liv-bio2h",
 },
 
   'liv-bio3': {
@@ -419,7 +419,7 @@ let chapters = {
     filtro2 : "terofita",
     colore: col,
     nome: "liv-bio3",
-    nome2:"liv-bio3h",
+    // nome2:"liv-bio3h",
 },
 'liv-bio4': {
 
@@ -427,7 +427,7 @@ let chapters = {
   filtro2 : "fanerofita",
   colore: col,
   nome: "liv-bio4",
-  nome2:"liv-bio4h",
+  // nome2:"liv-bio4h",
 },
 
 'liv-bio5': {
@@ -449,6 +449,7 @@ let chapters = {
 'liv-bio7': {
   filtro1 :"forma-bio-semp",
   filtro2 : "idrofita",
+  filtro3 : "elofita",
   colore: col,
   nome: "liv-bio7",
 },
@@ -469,10 +470,7 @@ let chapters = {
     duration: 5000,
     center: [9.627021090188578, 45.69574912033943],
     zoom: 12,
-    // filtro1 :"corotipi",
-    // filtro2 : "Artemisia verlotiorum Lamotte",
-    // colore: "fdc086",
-    // nome: "liv-cor1",
+
 },
 
 

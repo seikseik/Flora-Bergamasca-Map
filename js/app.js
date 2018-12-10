@@ -33,7 +33,7 @@ function openNav() {
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
     document.getElementById("ring-size-tabs").style.width = "0px";
-    document.getElementById("ring-size-tabs").style.left = "-120px";
+    document.getElementById("ring-size-tabs").style.left = "-110px";
 
     document.getElementById("apri").style.left = "0px";
     document.getElementById("triangolo").classList.remove("attivo");

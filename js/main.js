@@ -9,7 +9,7 @@ if (!mapboxgl.supported()) {
     alert('Il tuo browser non supporta Mapbox GL');
 } else { var map = new mapboxgl.Map({
     container: 'map', // container id
-    style: 'mapbox://styles/matteoseik/cjon3rla12n182rp6govkw37a', //hosted style id
+    style: 'mapbox://styles/matteoseik/cjnsxmwc23cmb2slpa6lqrsse', //hosted style id
     center: [9.674504
 , 45.695638], // starting position
     zoom: 13 // starting zoom
@@ -145,7 +145,13 @@ var capitoli = Object.keys(chapters);
           },
       });
 
-      map.setFilter( nome, ['==', filtro1, filtro2]);
+      map.setFilter( nome, ["==",filtro1, filtro2]);
+
+//       map.setFilter( nome,
+//         ["in", filter1, filter2, filter3]
+// );
+
+
 
 
           // POPUP
@@ -496,3 +502,15 @@ let aa = listaLi[i];
 let bb = color[i];
 aa.style.backgroundColor = color[i];
 }
+
+
+
+
+//  SEARCH
+var filterInput = document.getElementById('filter-input');
+
+filterInput.addEventListener('keyup', function(e) {
+       var value = e.target.value.trim().toLowerCase();
+
+
+       });
