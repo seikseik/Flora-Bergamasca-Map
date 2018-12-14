@@ -401,10 +401,15 @@ let chapters = {
 
 // TIPI BIOLOGICI
 
-  'liv-bb': {
+  'liv-bio': {
     duration: 5000,
     center: [9.627021090188578, 45.69574912033943],
     zoom: 12,
+    filtro1 :"",
+    filtro2 : "",
+    colore: "",
+    nome: "",
+    nome2:"",
 
 },
   'liv-bio2': {
@@ -480,6 +485,11 @@ let chapters = {
     duration: 5000,
     center: [9.627021090188578, 45.69574912033943],
     zoom: 12,
+    filtro1 :"",
+    filtro2 : "",
+    colore: "",
+    nome: "",
+    nome2: "",
 
 },
 
@@ -565,6 +575,8 @@ let chapters = {
     filtro3: "chenopodiaceae",
     colore: col,
     nome: "liv-pol2",
+    nome2: "liv-pol2h",
+
 
 },
 
@@ -574,6 +586,7 @@ let chapters = {
   filtro3:"",
   colore: col,
   nome: "liv-pol3",
+  nome2: "liv-pol3h",
 },
 
 'liv-pol4': {
@@ -582,6 +595,7 @@ let chapters = {
   filtro3:"",
   colore: col,
   nome: "liv-pol4",
+  nome2: "liv-pol4h",
 },
 
 'liv-pol5': {
@@ -590,6 +604,7 @@ let chapters = {
   filtro3: "taxaceae",
   colore: col,
   nome: "liv-pol5",
+  nome2: "liv-pol5h",
 },
 
 'liv-pol6': {
@@ -598,6 +613,7 @@ let chapters = {
   filtro3:"",
   colore: col,
   nome: "liv-pol6",
+  nome2: "liv-pol6h",
 },
 
 'liv-pol7': {
@@ -606,6 +622,7 @@ let chapters = {
   filtro3:"",
   colore: col,
   nome: "liv-pol7",
+  nome2: "liv-pol7h",
 },
 'liv-pol8': {
   filtro1 :"famiglia",
@@ -613,6 +630,7 @@ let chapters = {
   filtro3:"",
   colore: col,
   nome: "liv-pol8",
+  nome2: "liv-pol8h",
 },
 'liv-pol9': {
   filtro1 :"famiglia",
@@ -621,6 +639,7 @@ let chapters = {
   filtro3:"",
   colore: col,
   nome: "liv-pol9",
+  nome2: "liv-pol9h",
 },
 'liv-pol10': {
   // filtro1 :"famiglia",

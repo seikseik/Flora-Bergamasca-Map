@@ -1,9 +1,11 @@
 let arrayCircle =[];
 let arrayHeat=[];
 let arrayAll=[];
-
-
+var e = activeChapterName + "h";
 var activeChapterName ="par1";
+
+
+
 
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibWF0dGVvc2VpayIsImEiOiJjajQxbzYyamYwZ3BoMnFwYW14OWJ4YzFzIn0.ftiqjSyzdVDOaclBCDp4Gg';
@@ -48,43 +50,28 @@ side.onscroll = function() {
       }else if(isElementOnScreenTitolo("sesto")){
           $("#ringTabDrop").text("Specie Allergeniche");}
 
-  // On every scroll event, check se il livello acceso corrisponde al capitolo acceso
-  // altrimenti rimuove l'ultimo livello creato
-  // Il problema è rimuovere due livelli insieme:
 
 
-          var d = map.getStyle().layers;
-          var c = d[d.length-1].id;
-          var elimina1 = [d.length-2].id;
-          var elimina2 = [d.length-3].id;
-          var tipo =d[d.length-1].type;
-          var e = activeChapterName + "h";
-          var h = c - "h";
-          var f = d[d.length-2].id;
 
-
-          // if(c == e || c == activeChapterName && c.startsWith("liv")){
-          //   map.removeLayer(elimina1);
-          //   map.removeLayer(elimina2);
-          // }
-
-// function rimuoviLivelli(){
-//   for(let a = 0; a < arrayLayer.length; a++){
-//     map.removeLayer(arrayLayer[a]);
+// var e = activeChapterName + "h";
+//
+// for(let b = 0; b < arrayCircle.length; b++){
+//   if(arrayCircle.length > 1 && arrayCircle[b] !== activeChapterName){
+//       map.removeLayer(arrayCircle[b]);
 //   }
 // }
-
-for(let b = 0; b < arrayCircle.length; b++){
-  if(arrayCircle[b] !== activeChapterName){
-      map.removeLayer(arrayCircle[b]);
-  }
-}
-
-for(let a = 0; a < arrayHeat.length; a++){
-  if(arrayHeat[a] !== e && arrayHeat[a] !== "liv-bg"){
-    map.removeLayer(arrayHeat[a]);
-  }
-}
+//
+// for(let a = 0; a < arrayHeat.length; a++){
+//   if(arrayHeat.length > 1 && arrayHeat[a] !== e && arrayHeat[a] !== "liv-bg"){
+//     map.removeLayer(arrayHeat[a]);
+//   }
+// }
+//
+//     for(let c = 0; c < arrayAll.length; c++){
+//       if(arrayAll.length > 1 && arrayAll[c] !== activeChapterName){
+//       map.removeLayer(arrayAll[c]);
+//     }
+// }
 
 
   var chapterNames = Object.keys(chapters);
@@ -99,6 +86,26 @@ for(let a = 0; a < arrayHeat.length; a++){
 };
 
 
+function deleteCircles(){
+for(let b = 0; b < arrayCircle.length; b++){
+  if(arrayCircle.length > 0 && arrayCircle[b] !== activeChapterName){
+      map.removeLayer(arrayCircle[b]);  }
+    }
+}
+function deleteHeat(){
+for(let a = 0; a < arrayHeat.length; a++){
+  if(arrayHeat.length > 0 && arrayHeat[a] !== e && arrayHeat[a] !== "liv-bg"){
+    map.removeLayer(arrayHeat[a]);}
+  }
+}
+
+function deleteAll(){
+    for(let c = 0; c < arrayAll.length; c++){
+      if(arrayAll.length > 0 && arrayAll[c] !== activeChapterName){
+      map.removeLayer(arrayAll[c]);
+    }
+  }
+}
 
 
 
@@ -144,7 +151,7 @@ var capitoli = Object.keys(chapters);
           'paint': {
               'circle-radius': {
                   'base': 2,
-                  'stops': [[12, 2.3], [22, 180]]
+                  'stops': [[12, 2.3], [22, 200]]
               },
               'circle-stroke-color': 'white',
               'circle-stroke-width': 0.2,
@@ -219,14 +226,6 @@ var capitoli = Object.keys(chapters);
              map.getCanvas().style.cursor = '';
          });
 
-    // RIMUOVI LIVELLO PRECEDENTE
-    // var a = map.getStyle().layers;
-    // var b = a[a.length-2].id;
-    //  map.removeLayer(b);
-
-    // for(let b = 0; b < arrayCircle.length; b++){
-    //   map.removeLayer(arrayCircle[b]);
-    // }
 
     arrayCircle.push(nome);
 };   //  FINE FUNZIONE ACCENDI LIVELLO 1
@@ -254,7 +253,7 @@ var capitoli2 = Object.keys(chapters);
     },
 
     "heatmap-weight":0.7,
-    "heatmap-intensity":0.6,
+    "heatmap-intensity":0.7,
 
 
     "heatmap-color": [
@@ -288,9 +287,7 @@ var capitoli2 = Object.keys(chapters);
 
   map.setFilter( nome2, ['==', filtro1, filtro2]);
 
-// for(let a = 0; a < arrayHeat.length; a++){
-//   map.removeLayer(arrayHeat[a]);
-// }
+
 
   arrayHeat.push(nome2);
 
@@ -312,11 +309,18 @@ var capitoli = Object.keys(chapters);
           'paint': {
               'circle-radius': {
                   'base': 2,
-                  'stops': [[12, 2.3], [22, 180]]
+                  'stops': [[12, 2.3], [22, 200]]
               },
               'circle-stroke-color': 'white',
               'circle-stroke-width': 0.2,
-              'circle-color': colore
+              'circle-color': colore,
+              'circle-opacity': {
+                  default: 0,
+                  stops: [
+                    [14, 0],
+                    [15, 1]
+                  ]
+                },
           },
       });
 
@@ -369,18 +373,8 @@ var capitoli = Object.keys(chapters);
              map.getCanvas().style.cursor = '';
          });
 
-    // RIMUOVI LIVELLO PRECEDENTE
-    // var a = map.getStyle().layers;
-    // var b = a[a.length-2].id;
-    // var tipo = a[a.length-2].type;
-    // map.removeLayer(b);
-    //
-    // }
 
-    for(let c = 0; c < arrayAll.length; c++){
-      map.removeLayer(arrayAll[c]);
-    }
-    arrayAll.push(nome);
+      arrayAll.push(nome);
 
 };
 
@@ -454,13 +448,12 @@ var capitoli = Object.keys(chapters);
              map.getCanvas().style.cursor = '';
          });
 
-
 };  // LIVELLO LEGENDA
 
 
+
+
 //  ATTIVA FUNZIONI QUANDO ID ATTIVO
-
-
 
 function setActiveChapter(chapterName) {
   if (chapterName === activeChapterName) return;
@@ -474,28 +467,46 @@ function setActiveChapter(chapterName) {
 
 
   if(activeChapterName.startsWith("liv-bg")){
+    deleteAll();
+    deleteHeat();
+    deleteCircles();
     addCerchio(chapters[chapterName].filtro1, chapters[chapterName].filtro2,chapters[chapterName].colore, chapters[chapterName].nome);
     addHeat(chapters[chapterName].nome2,chapters[chapterName].filtro1, chapters[chapterName].filtro2);
   };
 
   if(activeChapterName.startsWith("liv-cor")){
+    deleteAll();
+    deleteHeat();
+    deleteCircles();
     addCerchio(chapters[chapterName].filtro1, chapters[chapterName].filtro2,chapters[chapterName].colore, chapters[chapterName].nome);
     addHeat(chapters[chapterName].nome2,chapters[chapterName].filtro1, chapters[chapterName].filtro2);
 
   };
 
   if(activeChapterName.startsWith("liv-bio")){
+    deleteAll();
+    deleteHeat();
+    deleteCircles();
     addCerchio(chapters[chapterName].filtro1, chapters[chapterName].filtro2,chapters[chapterName].colore, chapters[chapterName].nome);
     addHeat(chapters[chapterName].nome2,chapters[chapterName].filtro1, chapters[chapterName].filtro2);
 
   };
 
   if(activeChapterName.startsWith("liv-geo")){
+    deleteAll();
+    deleteHeat();
+    deleteCircles();
     addPoligono(chapters[chapterName].nome2,chapters[chapterName].coordinate, chapters[chapterName].colore2);
+
   };
 
   if(activeChapterName.startsWith("liv-pol")){
+    deleteAll();
+    deleteHeat();
+    deleteCircles();
     addPolline(chapters[chapterName].filtro1, chapters[chapterName].filtro2, chapters[chapterName].filtro3, chapters[chapterName].colore, chapters[chapterName].nome);
+    addHeat(chapters[chapterName].nome2,chapters[chapterName].filtro1, chapters[chapterName].filtro2);
+
   };
 
   if(activeChapterName.startsWith("liv-geo")== false){
@@ -509,6 +520,8 @@ function setActiveChapter(chapterName) {
     }
 
   };
+
+
 
 
 //  CHECK SE ELEMENT E' SU SCHERMO
