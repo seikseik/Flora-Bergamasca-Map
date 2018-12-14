@@ -92,8 +92,6 @@ hr{
   display:flex;
   color:black;
   position:absolute;
-  transition: 0.4s;
-  transition-timing-function: ease;
   z-index: 1000;
   padding-bottom:3px;
   left: 50%;

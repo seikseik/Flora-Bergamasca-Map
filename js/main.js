@@ -1,3 +1,6 @@
+let arrayCircle =[];
+let arrayHeat=[];
+let arrayAll=[];
 
 
 var activeChapterName ="par1";
@@ -12,7 +15,7 @@ if (!mapboxgl.supported()) {
     style: 'mapbox://styles/matteoseik/cjnsxmwc23cmb2slpa6lqrsse', //hosted style id
     center: [9.674504
 , 45.695638], // starting position
-    zoom: 13 // starting zoom
+    zoom: 13
 });
 }
 
@@ -23,6 +26,7 @@ map.on('load', function() {
     data: './json/segnalazioni.geojson'
   });
 });
+
 
 
 
@@ -49,36 +53,38 @@ side.onscroll = function() {
   // Il problema è rimuovere due livelli insieme:
 
 
-
           var d = map.getStyle().layers;
           var c = d[d.length-1].id;
+          var elimina1 = [d.length-2].id;
+          var elimina2 = [d.length-3].id;
           var tipo =d[d.length-1].type;
           var e = activeChapterName + "h";
           var h = c - "h";
           var f = d[d.length-2].id;
 
-          // console.log(tipo);
-          console.log(c);
-          console.log(h);
 
-          // if(c == e && activeChapterName !== h ){
-          //   map.removeLayer(e);
+          // if(c == e || c == activeChapterName && c.startsWith("liv")){
+          //   map.removeLayer(elimina1);
+          //   map.removeLayer(elimina2);
           // }
 
+// function rimuoviLivelli(){
+//   for(let a = 0; a < arrayLayer.length; a++){
+//     map.removeLayer(arrayLayer[a]);
+//   }
+// }
 
+for(let b = 0; b < arrayCircle.length; b++){
+  if(arrayCircle[b] !== activeChapterName){
+      map.removeLayer(arrayCircle[b]);
+  }
+}
 
-          // if(activeChapterName.startsWith("liv-bio") && tipo =="heatmap"){
-          //   map.removeLayer(c);
-          // }
-
-          if(activeChapterName !== c && c.startsWith("liv")){
-            map.removeLayer(c);
-          }
-
-
-          // if(activeChapterName !== c && c.startsWith("liv")){
-          //   map.removeLayer(c);
-          // }
+for(let a = 0; a < arrayHeat.length; a++){
+  if(arrayHeat[a] !== e && arrayHeat[a] !== "liv-bg"){
+    map.removeLayer(arrayHeat[a]);
+  }
+}
 
 
   var chapterNames = Object.keys(chapters);
@@ -89,6 +95,7 @@ side.onscroll = function() {
           break;
       }
   }
+
 };
 
 
@@ -141,8 +148,24 @@ var capitoli = Object.keys(chapters);
               },
               'circle-stroke-color': 'white',
               'circle-stroke-width': 0.2,
-              'circle-color': colore
+              'circle-color': colore,
+
+              'circle-opacity': {
+                  default: 0,
+                  stops: [
+                    [14, 0],
+                    [15, 1]
+                  ]
+                },
+
+
+
           },
+
+
+
+
+
       });
 
       map.setFilter( nome, ["==",filtro1, filtro2]);
@@ -150,8 +173,6 @@ var capitoli = Object.keys(chapters);
 //       map.setFilter( nome,
 //         ["in", filter1, filter2, filter3]
 // );
-
-
 
 
           // POPUP
@@ -199,10 +220,15 @@ var capitoli = Object.keys(chapters);
          });
 
     // RIMUOVI LIVELLO PRECEDENTE
-    var a = map.getStyle().layers;
-    var b = a[a.length-2].id;
-     map.removeLayer(b);
+    // var a = map.getStyle().layers;
+    // var b = a[a.length-2].id;
+    //  map.removeLayer(b);
 
+    // for(let b = 0; b < arrayCircle.length; b++){
+    //   map.removeLayer(arrayCircle[b]);
+    // }
+
+    arrayCircle.push(nome);
 };   //  FINE FUNZIONE ACCENDI LIVELLO 1
 
 
@@ -226,27 +252,33 @@ var capitoli2 = Object.keys(chapters);
         [14, 1]
       ]
     },
+
+    "heatmap-weight":0.7,
+    "heatmap-intensity":0.6,
+
+
     "heatmap-color": [
                 "interpolate",
                 ["linear"],
                 ["heatmap-density"],
                 0, "rgba(33,102,172,0)",
                   0.2, "rgb(103,169,207)",
-                  0.4, "rgb(209,229,240)",
-                  0.6, "rgb(253,219,199)",
-                  0.8, "#F0BA51",
-                  1, "#F65900"
+                  0.3, "rgb(209,229,240)",
+                  0.6, "yellow",
+                  0.8, "orange",
+                  1, "red"
+
             ],
     'heatmap-radius': {
       stops: [
         [11, 5],
-        [15, 7]
+        [15, 9]
       ]
     },
     'heatmap-opacity': {
       default: 1,
       stops: [
-        [14, 0.8],
+        [14, 1],
         [15, 0]
       ]
     },
@@ -256,7 +288,14 @@ var capitoli2 = Object.keys(chapters);
 
   map.setFilter( nome2, ['==', filtro1, filtro2]);
 
+// for(let a = 0; a < arrayHeat.length; a++){
+//   map.removeLayer(arrayHeat[a]);
+// }
+
+  arrayHeat.push(nome2);
+
 };   //  FINE HEATMAP
+
 
 
 //  INIZIO FUNZIONE ACCENDI LIVELLO 1
@@ -331,9 +370,17 @@ var capitoli = Object.keys(chapters);
          });
 
     // RIMUOVI LIVELLO PRECEDENTE
-    var a = map.getStyle().layers;
-    var b = a[a.length-2].id;
-     map.removeLayer(b);
+    // var a = map.getStyle().layers;
+    // var b = a[a.length-2].id;
+    // var tipo = a[a.length-2].type;
+    // map.removeLayer(b);
+    //
+    // }
+
+    for(let c = 0; c < arrayAll.length; c++){
+      map.removeLayer(arrayAll[c]);
+    }
+    arrayAll.push(nome);
 
 };
 
@@ -357,7 +404,7 @@ var capitoli = Object.keys(chapters);
               'circle-stroke-color': 'white',
               'circle-stroke-width': 0.2,
               'circle-color': colore,
-              'circle-opacity': 0.8
+              'circle-opacity': 0.3
               // 'circle-blur': 0.2
           },
       });
@@ -413,6 +460,8 @@ var capitoli = Object.keys(chapters);
 
 //  ATTIVA FUNZIONI QUANDO ID ATTIVO
 
+
+
 function setActiveChapter(chapterName) {
   if (chapterName === activeChapterName) return;
 
@@ -425,11 +474,14 @@ function setActiveChapter(chapterName) {
 
 
   if(activeChapterName.startsWith("liv-bg")){
+    addCerchio(chapters[chapterName].filtro1, chapters[chapterName].filtro2,chapters[chapterName].colore, chapters[chapterName].nome);
     addHeat(chapters[chapterName].nome2,chapters[chapterName].filtro1, chapters[chapterName].filtro2);
   };
 
   if(activeChapterName.startsWith("liv-cor")){
     addCerchio(chapters[chapterName].filtro1, chapters[chapterName].filtro2,chapters[chapterName].colore, chapters[chapterName].nome);
+    addHeat(chapters[chapterName].nome2,chapters[chapterName].filtro1, chapters[chapterName].filtro2);
+
   };
 
   if(activeChapterName.startsWith("liv-bio")){
@@ -511,7 +563,7 @@ aa.style.backgroundColor = color[i];
 
 
 
-
+// https://www.w3schools.com/howto/howto_js_autocomplete.asp
 
 //  SEARCH
 var filterInput = document.getElementById('filter-input');

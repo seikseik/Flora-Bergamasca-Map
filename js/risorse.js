@@ -392,7 +392,9 @@ let chapters = {
       duration: 5000,
       center: [9.627021090188578, 45.69574912033943],
       zoom: 12,
-      nome2: "liv-bg",
+      colore: col,
+      nome: "liv-bg",
+      nome2: "liv-bgh"
 },
 
 
@@ -410,7 +412,7 @@ let chapters = {
     filtro2 : "emicriptofita",
     colore: col,
     nome: "liv-bio2",
-    // nome2:"liv-bio2h",
+    nome2:"liv-bio2h",
 },
 
   'liv-bio3': {
@@ -419,7 +421,7 @@ let chapters = {
     filtro2 : "terofita",
     colore: col,
     nome: "liv-bio3",
-    // nome2:"liv-bio3h",
+    nome2:"liv-bio3h",
 },
 'liv-bio4': {
 
@@ -427,7 +429,7 @@ let chapters = {
   filtro2 : "fanerofita",
   colore: col,
   nome: "liv-bio4",
-  // nome2:"liv-bio4h",
+  nome2:"liv-bio4h",
 },
 
 'liv-bio5': {
@@ -436,6 +438,8 @@ let chapters = {
   filtro2 : "geofita",
   colore: col,
   nome: "liv-bio5",
+  nome2:"liv-bio5h",
+
 },
 
 'liv-bio6': {
@@ -444,6 +448,8 @@ let chapters = {
   filtro2 : "camefita",
   colore: col,
   nome: "liv-bio6",
+  nome2:"liv-bio6h",
+
 },
 
 'liv-bio7': {
@@ -452,6 +458,8 @@ let chapters = {
   filtro3 : "elofita",
   colore: col,
   nome: "liv-bio7",
+  nome2:"liv-bio7h",
+
 },
 
 
@@ -460,6 +468,8 @@ let chapters = {
   filtro2 : "elofita",
   colore: col,
   nome: "liv-bio8",
+  nome2:"liv-bio8h",
+
 },
 
 
@@ -479,6 +489,7 @@ let chapters = {
     filtro2 : "Eurasiatico",
     colore: col,
     nome: "liv-cor2",
+    nome2: "liv-cor2h",
 },
 
 
@@ -487,6 +498,7 @@ let chapters = {
     filtro2 : "Europeo",
     colore: col,
     nome: "liv-cor3",
+    nome2: "liv-cor3h",
 
 },
 
@@ -495,6 +507,7 @@ let chapters = {
   filtro2 : "Mediterraneo s.l.",
   colore: col,
   nome: "liv-cor4",
+  nome2: "liv-cor4h",
 },
 
 'liv-cor5': {
@@ -502,6 +515,8 @@ let chapters = {
   filtro2 : "Eurosibirico",
   colore: col,
   nome: "liv-cor5",
+  nome2: "liv-cor5h",
+
 },
 
 'liv-cor6': {
@@ -509,6 +524,8 @@ let chapters = {
   filtro2 : "Circumboreale",
   colore: col,
   nome: "liv-cor6",
+  nome2: "liv-cor6h",
+
 },
 
 'liv-cor7': {
@@ -516,6 +533,8 @@ let chapters = {
   filtro2 : "Europeo-montano",
   colore: col,
   nome: "liv-cor7",
+  nome2: "liv-cor7h",
+
 },
 
 'liv-cor8': {
@@ -523,6 +542,8 @@ let chapters = {
   filtro2 : "Cosmopolita",
   colore: col,
   nome: "liv-cor8",
+  nome2: "liv-cor8h",
+
 },
 
 
