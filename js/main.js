@@ -14,7 +14,7 @@ if (!mapboxgl.supported()) {
     alert('Il tuo browser non supporta Mapbox GL');
 } else { var map = new mapboxgl.Map({
     container: 'map', // container id
-    style: 'mapbox://styles/matteoseik/cjnsxmwc23cmb2slpa6lqrsse', //hosted style id
+    style: 'mapbox://styles/matteoseik/cjpocj7pp0ozz2so0dfojhza1', //hosted style id
     center: [9.674504
 , 45.695638], // starting position
     zoom: 13
@@ -28,7 +28,6 @@ map.on('load', function() {
     data: './json/segnalazioni.geojson'
   });
 });
-
 
 
 
@@ -50,28 +49,6 @@ side.onscroll = function() {
       }else if(isElementOnScreenTitolo("sesto")){
           $("#ringTabDrop").text("Specie Allergeniche");}
 
-
-
-
-// var e = activeChapterName + "h";
-//
-// for(let b = 0; b < arrayCircle.length; b++){
-//   if(arrayCircle.length > 1 && arrayCircle[b] !== activeChapterName){
-//       map.removeLayer(arrayCircle[b]);
-//   }
-// }
-//
-// for(let a = 0; a < arrayHeat.length; a++){
-//   if(arrayHeat.length > 1 && arrayHeat[a] !== e && arrayHeat[a] !== "liv-bg"){
-//     map.removeLayer(arrayHeat[a]);
-//   }
-// }
-//
-//     for(let c = 0; c < arrayAll.length; c++){
-//       if(arrayAll.length > 1 && arrayAll[c] !== activeChapterName){
-//       map.removeLayer(arrayAll[c]);
-//     }
-// }
 
 
   var chapterNames = Object.keys(chapters);
@@ -138,7 +115,7 @@ map.addLayer({
 
 
 //  INIZIO FUNZIONE ACCENDI LIVELLO 1
-function addCerchio(filtro1, filtro2, colore, nome){
+function addCerchio(filtro1, filtro2, filtro3, colore, nome){
 var capitoli = Object.keys(chapters);
 
     map.addLayer({
@@ -164,22 +141,20 @@ var capitoli = Object.keys(chapters);
                     [15, 1]
                   ]
                 },
-
-
-
           },
-
-
-
-
 
       });
 
       map.setFilter( nome, ["==",filtro1, filtro2]);
 
-//       map.setFilter( nome,
-//         ["in", filter1, filter2, filter3]
-// );
+      map.setFilter( nome, [
+    "any",
+    ["==", filtro1, filtro2],
+    ["==", filtro1, filtro3],
+
+    ]);
+
+
 
 
           // POPUP
@@ -233,7 +208,7 @@ var capitoli = Object.keys(chapters);
 
 
 
-function addHeat(nome2, filtro1, filtro2,){
+function addHeat(nome2, filtro1, filtro2, filtro3){
 var capitoli2 = Object.keys(chapters);
 
     map.addLayer({
@@ -285,12 +260,13 @@ var capitoli2 = Object.keys(chapters);
 
   });
 
+if(nome2 == 'liv-bio7h'){
+  map.setFilter( nome2, ['in', filtro1, filtro2, filtro3]);
+}else{
   map.setFilter( nome2, ['==', filtro1, filtro2]);
-
-
+}
 
   arrayHeat.push(nome2);
-
 };   //  FINE HEATMAP
 
 
@@ -329,7 +305,6 @@ var capitoli = Object.keys(chapters);
     ["==", "ALLERGENICA", "SI"],
     ["in",filtro1, filtro2, filtro3]
 ]);
-
 
           // POPUP
               map.on('click', function(e) {
@@ -375,7 +350,6 @@ var capitoli = Object.keys(chapters);
 
 
       arrayAll.push(nome);
-
 };
 
 
@@ -487,8 +461,8 @@ function setActiveChapter(chapterName) {
     deleteAll();
     deleteHeat();
     deleteCircles();
-    addCerchio(chapters[chapterName].filtro1, chapters[chapterName].filtro2,chapters[chapterName].colore, chapters[chapterName].nome);
-    addHeat(chapters[chapterName].nome2,chapters[chapterName].filtro1, chapters[chapterName].filtro2);
+    addCerchio(chapters[chapterName].filtro1, chapters[chapterName].filtro2,chapters[chapterName].filtro3,chapters[chapterName].colore, chapters[chapterName].nome);
+    addHeat(chapters[chapterName].nome2,chapters[chapterName].filtro1, chapters[chapterName].filtro2,chapters[chapterName].filtro3);
 
   };
 

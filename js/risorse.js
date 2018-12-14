@@ -448,7 +448,6 @@ let chapters = {
 },
 
 'liv-bio6': {
-
   filtro1 :"forma-bio-semp",
   filtro2 : "camefita",
   colore: col,
@@ -598,14 +597,14 @@ let chapters = {
   nome2: "liv-pol4h",
 },
 
-'liv-pol5': {
-  filtro1 :"famiglia",
-  filtro2 : "cupressaceae",
-  filtro3: "taxaceae",
-  colore: col,
-  nome: "liv-pol5",
-  nome2: "liv-pol5h",
-},
+// 'liv-pol5': {
+//   filtro1 :"famiglia",
+//   filtro2 : "cupressaceae",
+//   filtro3: "taxaceae",
+//   colore: col,
+//   nome: "liv-pol5",
+//   nome2: "liv-pol5h",
+// },
 
 'liv-pol6': {
   filtro1 :"famiglia",
