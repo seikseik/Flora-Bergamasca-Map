@@ -467,14 +467,14 @@ let chapters = {
 },
 
 
-'liv-bio8': {
-  filtro1 :"forma-bio-semp",
-  filtro2 : "elofita",
-  colore: col,
-  nome: "liv-bio8",
-  nome2:"liv-bio8h",
-
-},
+// 'liv-bio8': {
+//   filtro1 :"forma-bio-semp",
+//   filtro2 : "elofita",
+//   colore: col,
+//   nome: "liv-bio8",
+//   nome2:"liv-bio8h",
+//
+// },
 
 
 

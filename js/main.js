@@ -3,8 +3,7 @@ let arrayHeat=[];
 let arrayAll=[];
 var e = activeChapterName + "h";
 var activeChapterName ="par1";
-
-
+var livelloLabel;
 
 
 
@@ -14,7 +13,7 @@ if (!mapboxgl.supported()) {
     alert('Il tuo browser non supporta Mapbox GL');
 } else { var map = new mapboxgl.Map({
     container: 'map', // container id
-    style: 'mapbox://styles/matteoseik/cjpocj7pp0ozz2so0dfojhza1', //hosted style id
+    style: 'mapbox://styles/matteoseik/cjpogzd8j09ic2rn4mfhx4iuk', //hosted style id
     center: [9.674504
 , 45.695638], // starting position
     zoom: 13
@@ -27,6 +26,10 @@ map.on('load', function() {
     type: 'geojson',
     data: './json/segnalazioni.geojson'
   });
+
+  var aa = map.getLayer("road-label-small");
+  var bb = aa.id;
+  livelloLabel = bb;
 });
 
 
@@ -83,6 +86,7 @@ function deleteAll(){
     }
   }
 }
+
 
 
 
@@ -143,7 +147,7 @@ var capitoli = Object.keys(chapters);
                 },
           },
 
-      });
+      },livelloLabel);
 
       map.setFilter( nome, ["==",filtro1, filtro2]);
 
@@ -153,9 +157,6 @@ var capitoli = Object.keys(chapters);
     ["==", filtro1, filtro3],
 
     ]);
-
-
-
 
           // POPUP
               map.on('click', function(e) {
@@ -207,7 +208,6 @@ var capitoli = Object.keys(chapters);
 
 
 
-
 function addHeat(nome2, filtro1, filtro2, filtro3){
 var capitoli2 = Object.keys(chapters);
 
@@ -240,7 +240,7 @@ var capitoli2 = Object.keys(chapters);
                   0.3, "rgb(209,229,240)",
                   0.6, "yellow",
                   0.8, "orange",
-                  1, "red"
+                  1, "#FF4F05"
 
             ],
     'heatmap-radius': {
@@ -252,13 +252,13 @@ var capitoli2 = Object.keys(chapters);
     'heatmap-opacity': {
       default: 1,
       stops: [
-        [14, 1],
+        [14, 0.9],
         [15, 0]
       ]
     },
   }
 
-  });
+},livelloLabel);
 
 if(nome2 == 'liv-bio7h'){
   map.setFilter( nome2, ['in', filtro1, filtro2, filtro3]);
@@ -298,7 +298,7 @@ var capitoli = Object.keys(chapters);
                   ]
                 },
           },
-      });
+      },livelloLabel);
 
       map.setFilter( nome, [
     "all",
@@ -375,7 +375,7 @@ var capitoli = Object.keys(chapters);
               'circle-opacity': 0.3
               // 'circle-blur': 0.2
           },
-      });
+      },livelloLabel);
 
       map.setFilter( nome, ['==', filtro1, filtro2]);
 
@@ -480,7 +480,7 @@ function setActiveChapter(chapterName) {
     deleteCircles();
     addPolline(chapters[chapterName].filtro1, chapters[chapterName].filtro2, chapters[chapterName].filtro3, chapters[chapterName].colore, chapters[chapterName].nome);
     addHeat(chapters[chapterName].nome2,chapters[chapterName].filtro1, chapters[chapterName].filtro2);
-
+    sliderPollini();
   };
 
   if(activeChapterName.startsWith("liv-geo")== false){
@@ -542,6 +542,82 @@ let aa = listaLi[i];
 let bb = color[i];
 aa.style.backgroundColor = color[i];
 }
+
+
+
+
+
+
+
+
+
+// prova slider
+
+
+var months = [
+    "Gennaio",
+    "Febbraio",
+    "Marzo",
+    "Aprile",
+    "Maggio",
+    "Giugno",
+    "Luglio",
+    "Agosto",
+    "Settembre",
+    "Ottobre",
+    "Novembre",
+    "Dicembre"
+];
+
+
+
+// map.on('load', function() {
+
+function sliderPollini(){
+
+document.getElementById('slider').addEventListener('input', function() {
+
+
+    map.addLayer({
+      id: 'pollini',
+      type: 'circle',
+      source: {
+        type: 'geojson',
+        data: './json/segnalazioni.geojson' // replace this with the url of your own geojson
+      },
+      'paint': {
+          'circle-radius': {
+              'base': 2,
+              'stops': [[12, 2.3], [22, 200]]
+          },
+          'circle-stroke-color': 'white',
+          'circle-stroke-width': 0.2,
+          'circle-color': "red",
+          // 'circle-opacity': {
+          //     default: 0,
+          //     stops: [
+          //       [14, 0],
+          //       [15, 1]
+          //     ]
+          //   },
+      },
+  });
+
+
+    document.getElementById('slider').addEventListener('input', function(e) {
+      var mese = parseInt(e.target.value);
+      map.setFilter('pollini', ['==', ['number', ['get', 'FENOL 1']], mese]);
+      document.getElementById('mese-attivo').innerText = months[mese];
+    });
+
+  });
+
+};
+
+
+
+
+
 
 
 
