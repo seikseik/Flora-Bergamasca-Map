@@ -211,62 +211,62 @@ var capitoli = Object.keys(chapters);
 function addHeat(nome2, filtro1, filtro2, filtro3){
 var capitoli2 = Object.keys(chapters);
 
-    map.addLayer({
-          'id': nome2,
-          'type': 'heatmap',
-          'source': 'segnalazioni',
-          'layout': {
-              'visibility': 'visible',
+          map.addLayer({
+                'id': nome2,
+                'type': 'heatmap',
+                'source': 'segnalazioni',
+                'layout': {
+                    'visibility': 'visible',
+                },
+                    'paint':{
+
+          'heatmap-intensity': {
+            stops: [
+              [10, 0.5],
+              [14, 1]
+            ]
           },
-              'paint':{
 
-    'heatmap-intensity': {
-      stops: [
-        [10, 0.5],
-        [14, 1]
-      ]
-    },
-
-    "heatmap-weight":0.7,
-    "heatmap-intensity":0.7,
+          "heatmap-weight":0.7,
+          "heatmap-intensity":0.7,
 
 
-    "heatmap-color": [
-                "interpolate",
-                ["linear"],
-                ["heatmap-density"],
-                0, "rgba(33,102,172,0)",
-                  0.2, "rgb(103,169,207)",
-                  0.3, "rgb(209,229,240)",
-                  0.6, "yellow",
-                  0.8, "orange",
-                  1, "#FF4F05"
+          "heatmap-color": [
+                      "interpolate",
+                      ["linear"],
+                      ["heatmap-density"],
+                      0, "rgba(33,102,172,0)",
+                        0.2, "rgb(103,169,207)",
+                        0.3, "rgb(209,229,240)",
+                        0.6, "yellow",
+                        0.8, "orange",
+                        1, "#FF4F05"
 
-            ],
-    'heatmap-radius': {
-      stops: [
-        [11, 5],
-        [15, 9]
-      ]
-    },
-    'heatmap-opacity': {
-      default: 1,
-      stops: [
-        [14, 0.9],
-        [15, 0]
-      ]
-    },
-  }
+                  ],
+          'heatmap-radius': {
+            stops: [
+              [11, 5],
+              [15, 9]
+            ]
+          },
+          'heatmap-opacity': {
+            default: 1,
+            stops: [
+              [14, 0.9],
+              [15, 0]
+            ]
+          },
+        }
 
-},livelloLabel);
+      },livelloLabel);
 
-if(nome2 == 'liv-bio7h'){
-  map.setFilter( nome2, ['in', filtro1, filtro2, filtro3]);
-}else{
-  map.setFilter( nome2, ['==', filtro1, filtro2]);
-}
+      if(nome2 == 'liv-bio7h'){
+        map.setFilter( nome2, ['in', filtro1, filtro2, filtro3]);
+      }else{
+        map.setFilter( nome2, ['==', filtro1, filtro2]);
+      }
 
-  arrayHeat.push(nome2);
+        arrayHeat.push(nome2);
 };   //  FINE HEATMAP
 
 
@@ -551,7 +551,7 @@ aa.style.backgroundColor = color[i];
 
 
 
-// prova slider
+// SLIDER
 
 
 var months = [
@@ -667,16 +667,23 @@ function sliderPollini(){
         document.getElementById('mese-attivo').innerText = months[mese];
 
     });
-
 };
 
 
 
-
+$(document).ready(function () {
+            $.getJSON('./json/segnalazioni.geojson', function (data) {
+                var items = [];
+                $.each(data.features, function (key, val) {
+                    console.log(val.properties["nome-completo"]);
+                });
+            });
+        });
 
 
 
 // https://www.w3schools.com/howto/howto_js_autocomplete.asp
+
 
 //  SEARCH
 var filterInput = document.getElementById('filter-input');
