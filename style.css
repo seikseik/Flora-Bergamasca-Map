@@ -519,7 +519,14 @@ list-style-type: none;
 
 
 .session {
-  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+#slider{
+  display: block;
+  width:99%;
+  margin-left:1px
+
 }
 
 .colors {

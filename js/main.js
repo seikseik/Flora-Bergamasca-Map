@@ -571,11 +571,7 @@ var months = [
 
 
 
-// map.on('load', function() {
-
 function sliderPollini(){
-
-document.getElementById('slider').addEventListener('input', function() {
 
     map.addLayer({
       "id": 'pollini',
@@ -589,25 +585,27 @@ document.getElementById('slider').addEventListener('input', function() {
           },
           'circle-stroke-color': 'white',
           'circle-stroke-width': 0.2,
-          // "circle-color":"red"
           'circle-color': [
                 'match',
                 ['get', 'famiglia'],
                 'graminaceae', '#fbb03b',
-                'betulaceae', '#223b53',
+                'betulaceae', 'blue',
                 'oleaceae', '#e55e5e',
                 'fagaceae', '#3bb2d0',
                 'compositae', 'red',
                 'urticaceae', 'green',
                 'moraceae', 'green',
                 'amaranthaceae', 'brown',
-                'rosaceae', 'purple',
-
                 /* altro */ "lightgrey"
-
             ]
       },
   });
+
+  map.setFilter("pollini", [
+    "all",
+    ["==", "ALLERGENICA", "SI"],
+    ['==', 'FENOL 1', "1"]
+  ]);
 
 
   // POPUP
@@ -621,8 +619,6 @@ document.getElementById('slider').addEventListener('input', function() {
         if (!features.length) {
           return;
         }
-
-
 
         var feature = features[0];
         var popup = new mapboxgl.Popup({ offset: [0, -15] })
@@ -657,24 +653,21 @@ document.getElementById('slider').addEventListener('input', function() {
   });
 
 
-
-
 // SLIDER
+
     document.getElementById('slider').addEventListener('input', function(e) {
-      var mese = parseInt(e.target.value);
+      let mese = parseInt(e.target.value);
 
-      map.setFilter('pollini', ['==', ['number', ['get', 'FENOL 1']], mese]);
+      map.setFilter("pollini", [
+        "all",
+        ["==", "ALLERGENICA", "SI"],
+        ['==', 'FENOL 1', mese]
+      ]);
 
-    //   map.setFilter("pollini", [
-    // "all",
-    // ["==", "ALLERGENICA", "SI"],
-    // ['==', ['number', ['get', 'FENOL 1']], mese]
-    // ]);
+        document.getElementById('mese-attivo').innerText = months[mese];
 
-
-      document.getElementById('mese-attivo').innerText = months[mese];
     });
-  });
+
 };
 
 
