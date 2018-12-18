@@ -13,7 +13,7 @@ if (!mapboxgl.supported()) {
     alert('Il tuo browser non supporta Mapbox GL');
 } else { var map = new mapboxgl.Map({
     container: 'map', // container id
-    style: 'mapbox://styles/matteoseik/cjpogzd8j09ic2rn4mfhx4iuk', //hosted style id
+    style: 'mapbox://styles/matteoseik/cjon3rla12n182rp6govkw37a', //hosted style id
     center: [9.674504
 , 45.695638], // starting position
     zoom: 13
@@ -577,14 +577,11 @@ function sliderPollini(){
 
 document.getElementById('slider').addEventListener('input', function() {
 
-
     map.addLayer({
-      id: 'pollini',
-      type: 'circle',
-      source: {
-        type: 'geojson',
-        data: './json/segnalazioni.geojson' // replace this with the url of your own geojson
-      },
+      "id": 'pollini',
+      "type": 'circle',
+      "source": "segnalazioni",
+
       'paint': {
           'circle-radius': {
               'base': 2,
@@ -592,33 +589,93 @@ document.getElementById('slider').addEventListener('input', function() {
           },
           'circle-stroke-color': 'white',
           'circle-stroke-width': 0.2,
-          'circle-color': "red",
-          // 'circle-opacity': {
-          //     default: 0,
-          //     stops: [
-          //       [14, 0],
-          //       [15, 1]
-          //     ]
-          //   },
+          // "circle-color":"red"
+          'circle-color': [
+                'match',
+                ['get', 'famiglia'],
+                'graminaceae', '#fbb03b',
+                'betulaceae', '#223b53',
+                'oleaceae', '#e55e5e',
+                'fagaceae', '#3bb2d0',
+                'compositae', 'red',
+                'urticaceae', 'green',
+                'moraceae', 'green',
+                'amaranthaceae', 'brown',
+                'rosaceae', 'purple',
+
+                /* altro */ "lightgrey"
+
+            ]
       },
   });
 
 
-    document.getElementById('slider').addEventListener('input', function(e) {
-      var mese = parseInt(e.target.value);
-      map.setFilter('pollini', ['==', ['number', ['get', 'FENOL 1']], mese]);
-      document.getElementById('mese-attivo').innerText = months[mese];
-    });
+  // POPUP
+      map.on('click', function(e) {
 
+        let nome = "pollini";
+        var features = map.queryRenderedFeatures(e.point, {
+          layers: [nome] // replace this with the name of the layer
+        });
+
+        if (!features.length) {
+          return;
+        }
+
+
+
+        var feature = features[0];
+        var popup = new mapboxgl.Popup({ offset: [0, -15] })
+          .setLngLat(feature.geometry.coordinates)
+          .setHTML('<div id=\'popup\' class=\'popup\' style=\'z-index: 10;\'>' +
+                    '<ul>' +
+                    '<li> Nome: ' + feature.properties['nome-completo'] + ' </li>' +
+                    '<li> Famiglia: ' + feature.properties['famiglia'] + ' </li>' +
+                    '<li> Corotipo:  ' + feature.properties['corotipi'] + ' </li>' +
+                    '<li> Forma biologica:  ' + feature.properties['forma-bio-semp'] + ' </li>' +
+                    '<li> <a target="_blank" href="https://www.actaplantarum.org/galleria_flora/galleria1.php?lista=0&mode=1&cat=24&cid=73&aid='+feature.properties['link']+'">Actaplantarum</a></li></ul></div>')
+          .setLngLat(feature.geometry.coordinates)
+          .addTo(map);
+
+          // remove popup
+          let listaP = document.getElementsByClassName("mapboxgl-popup");
+          if(popup.isOpen() && listaP.length > 1){
+            for (var i = listaP.length - 1; i >= 1; --i) {
+              listaP[i].parentNode.removeChild(listaP[i]);
+              }
+            }
+         });
+
+
+  // Change the cursor to a pointer when the mouse is over the places layer.
+  map.on('mouseenter', "pollini", function () {
+     map.getCanvas().style.cursor = 'pointer';
+  });
+  // Change it back to a pointer when it leaves.
+  map.on('mouseleave', "pollini", function () {
+     map.getCanvas().style.cursor = '';
   });
 
+
+
+
+// SLIDER
+    document.getElementById('slider').addEventListener('input', function(e) {
+      var mese = parseInt(e.target.value);
+
+      map.setFilter('pollini', ['==', ['number', ['get', 'FENOL 1']], mese]);
+
+    //   map.setFilter("pollini", [
+    // "all",
+    // ["==", "ALLERGENICA", "SI"],
+    // ['==', ['number', ['get', 'FENOL 1']], mese]
+    // ]);
+
+
+      document.getElementById('mese-attivo').innerText = months[mese];
+    });
+  });
 };
-
-
-
-
-
-
 
 
 
