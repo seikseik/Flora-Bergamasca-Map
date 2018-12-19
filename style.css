@@ -379,13 +379,13 @@ list-style-type: none;
 }
 
 .titolo-lista{
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   color: #404040;
   display: block;
   margin: 0;
   padding: 0;
-  padding: 10px;
+  padding: 15px;
   text-decoration: none;
   border-bottom: 1px solid rgba(0,0,0,0.1);
   text-align: center;
@@ -393,8 +393,8 @@ list-style-type: none;
 
 
    #legend a {
-       font-size: 13px;
-       line-height: 13px;
+       font-size: 14px;
+       line-height: 18px;
        color: #404040;
        display: block;
        margin: 0;
@@ -520,7 +520,6 @@ list-style-type: none;
   display: block;
   width:99%;
   margin-left:1px
-
 }
 
 .colors {
@@ -539,33 +538,54 @@ list-style-type: none;
 
 /*AUTOCOMPLETE FORM  */
 
-
 .autocomplete {
   position: relative;
   float:right;
   display: inline-block;
+  margin:10px 10px 10px 0px;
 }
 input {
   border: 1px solid transparent;
   background-color: #f1f1f1;
   float:right;
   padding: 10px;
-  font-size: 16px;
+  font-size: 14px;
 }
 input[type=text] {
   background-color: #f1f1f1;
-  width: 100%;
+  width:100%;
 }
-input[type=button] {
+
+
+.search {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  float:right;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.search[type=button] {
   background-color: darkgrey;
   color: #fff;
+  margin:10px 0px 10px 0px;
+  float:right;
 }
+
+#myButtonDelete{
+  background-color: black;
+  display:none;
+}#myButtonDelete img{
+  width:20px;
+}
+
 .autocomplete-items {
   overflow-y: scroll;
   border: 1px solid #d4d4d4;
   border-bottom: none;
   border-top: none;
   max-height: 300px;
+  font-size: 14px;
   z-index: 999;
   top: 100%;
   left: 0;
@@ -584,6 +604,3 @@ input[type=button] {
   background-color: DodgerBlue !important;
   color: #ffffff;
 }
-
-
-/* searchbar */

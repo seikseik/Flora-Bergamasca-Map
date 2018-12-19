@@ -675,33 +675,33 @@ function sliderPollini(){
 
 // AGGIUNGI LIVELLO ricerca
 
-function addRicerca(nome){
+function addRicerca(nome, coloreRicerca){
 map.addLayer({
-      'id': "livelloprova",
+      'id': nome,
       'type': 'circle',
       'source': 'segnalazioni',
       'layout': {
           'visibility': 'visible',
       },
       'paint': {
-          'circle-radius': {
-              'base': 10,
-              'stops': [[12, 6], [22, 300]]
-          },
+        'circle-radius': {
+            'base': 2,
+            'stops': [[12, 4], [22, 200]]
+        },
           'circle-stroke-color': 'white',
           'circle-stroke-width': 0.2,
-          'circle-color': "red"
+          'circle-color': coloreRicerca
       },
 
   },livelloLabel);
 
-  map.setFilter( "livelloprova", ["==","nome-completo", nome]);
+  map.setFilter( nome, ["==","nome-completo", nome]);
 
 
       // POPUP
           map.on('click', function(e) {
             var features = map.queryRenderedFeatures(e.point, {
-              layers: ["livelloprova"] // replace this with the name of the layer
+              layers: [nome] // replace this with the name of the layer
             });
 
             if (!features.length) {
@@ -733,15 +733,15 @@ map.addLayer({
 
 
   // Change the cursor to a pointer when the mouse is over the places layer.
-     map.on('mouseenter', "livelloprova", function () {
+     map.on('mouseenter', nome, function () {
          map.getCanvas().style.cursor = 'pointer';
      });
      // Change it back to a pointer when it leaves.
-     map.on('mouseleave', "livelloprova", function () {
+     map.on('mouseleave', nome, function () {
          map.getCanvas().style.cursor = '';
      });
 
-livelliRicerca.push("livelloprova");
+livelliRicerca.push(nome);
 };
 
 
@@ -1841,14 +1841,27 @@ document.addEventListener("click", function (e) {
 
 
 
-
 // crea livello su ricerca
 let livelliRicerca =[];
+let coloreRicerca = ['#FF007F','#004FFF','#28965A','#FF9000','#99007F'];
+let counter = 0;
 let inp2 = document.getElementById("myButton");
 
 inp2.addEventListener("click",function(){
   let nomeRicerca = inp.value;
-addRicerca(nomeRicerca);
-
-
+addRicerca(nomeRicerca, coloreRicerca[counter]);
+counter++;
+    if(counter>=5){
+        counter = 0;
+    }
+    document.getElementById("myButtonDelete").style.display = "block";
 })
+
+let inp3 = document.getElementById("myButtonDelete");
+inp3.addEventListener("click",function(){
+    for(a = 0; a < livelliRicerca.length; a++){
+        map.removeLayer(livelliRicerca[a]);
+    }
+    document.getElementById("myButtonDelete").style.display = "none";
+
+});
