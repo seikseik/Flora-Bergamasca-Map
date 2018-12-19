@@ -673,21 +673,79 @@ function sliderPollini(){
 
 
 
+// AGGIUNGI LIVELLO ricerca
+
+function addRicerca(nome){
+map.addLayer({
+      'id': "livelloprova",
+      'type': 'circle',
+      'source': 'segnalazioni',
+      'layout': {
+          'visibility': 'visible',
+      },
+      'paint': {
+          'circle-radius': {
+              'base': 10,
+              'stops': [[12, 6], [22, 300]]
+          },
+          'circle-stroke-color': 'white',
+          'circle-stroke-width': 0.2,
+          'circle-color': "red"
+      },
+
+  },livelloLabel);
+
+  map.setFilter( "livelloprova", ["==","nome-completo", nome]);
+
+
+      // POPUP
+          map.on('click', function(e) {
+            var features = map.queryRenderedFeatures(e.point, {
+              layers: ["livelloprova"] // replace this with the name of the layer
+            });
+
+            if (!features.length) {
+              return;
+            }
+
+
+            var feature = features[0];
+            var popup = new mapboxgl.Popup({ offset: [0, -15] })
+              .setLngLat(feature.geometry.coordinates)
+              .setHTML('<div id=\'popup\' class=\'popup\' style=\'z-index: 10;\'>' +
+                        '<ul>' +
+                        '<li> Nome: ' + feature.properties['nome-completo'] + ' </li>' +
+                        '<li> Famiglia: ' + feature.properties['famiglia'] + ' </li>' +
+                        '<li> Corotipo:  ' + feature.properties['corotipi'] + ' </li>' +
+                        '<li> Forma biologica:  ' + feature.properties['forma-bio-semp'] + ' </li>' +
+                        '<li> <a target="_blank" href="https://www.actaplantarum.org/galleria_flora/galleria1.php?lista=0&mode=1&cat=24&cid=73&aid='+feature.properties['link']+'">Actaplantarum</a></li></ul></div>')
+              .setLngLat(feature.geometry.coordinates)
+              .addTo(map);
+
+              // remove popup
+              let listaP = document.getElementsByClassName("mapboxgl-popup");
+              if(popup.isOpen() && listaP.length > 1){
+                for (var i = listaP.length - 1; i >= 1; --i) {
+                  listaP[i].parentNode.removeChild(listaP[i]);
+                  }
+                }
+             });
+
+
+  // Change the cursor to a pointer when the mouse is over the places layer.
+     map.on('mouseenter', "livelloprova", function () {
+         map.getCanvas().style.cursor = 'pointer';
+     });
+     // Change it back to a pointer when it leaves.
+     map.on('mouseleave', "livelloprova", function () {
+         map.getCanvas().style.cursor = '';
+     });
+
+livelliRicerca.push("livelloprova");
+};
 
 
 
-
-// $(document).ready(function () {
-//             $.getJSON('./json/segnalazioni.geojson', function (data) {
-//                 var items = [];
-//                 $.each(data.features, function (key, val) {
-//                     console.log(val.properties["nome-completo"]);
-//                 });
-//             });
-//         });
-
-
-// https://www.w3schools.com/howto/howto_js_autocomplete.asp
 
 
 //  SEARCH
@@ -1688,7 +1746,6 @@ function autocomplete(inp, arr) {
   var currentFocus;
   /*execute a function when someone writes in the text field:*/
   inp.addEventListener("input", function(e) {
-    console.log("ciao2");
 
       var a, b, i, val = this.value;
       /*close any already open lists of autocompleted values*/
@@ -1724,9 +1781,9 @@ function autocomplete(inp, arr) {
         }
       }
   });
+
   /*execute a function presses a key on the keyboard:*/
   inp.addEventListener("keydown", function(e) {
-    console.log("ciao3");
       var x = document.getElementById(this.id + "autocomplete-list");
       if (x) x = x.getElementsByTagName("div");
       if (e.keyCode == 40) {
@@ -1781,3 +1838,17 @@ document.addEventListener("click", function (e) {
     closeAllLists(e.target);
 });
 }
+
+
+
+
+// crea livello su ricerca
+let livelliRicerca =[];
+let inp2 = document.getElementById("myButton");
+
+inp2.addEventListener("click",function(){
+  let nomeRicerca = inp.value;
+addRicerca(nomeRicerca);
+
+
+})

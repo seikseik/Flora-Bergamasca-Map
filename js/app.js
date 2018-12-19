@@ -1,3 +1,28 @@
+// let tastoSearch = document.querySelector('#openSearch');
+// tastoSearch.addEventListener("click", function(e){
+// if(tastoSearch.classList.contains("off")){
+//
+//     document.getElementById("searchbar").style.right = "10px";
+//     tastoSearch.classList.remove("off");
+//     tastoSearch.classList.add("on");
+//
+//
+// } else if(tastoSearch.classList.contains("on")){
+//   document.getElementById("searchbar").style.right = "-250px";
+//   tastoSearch.classList.remove("on");
+//   tastoSearch.classList.add("off");
+//
+// }
+// })
+
+
+
+
+
+
+
+
+
 
 let tastolegenda = document.querySelector('#openLegend');
 tastolegenda.addEventListener("click", function(e){

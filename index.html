@@ -17,20 +17,17 @@
   </head>
 
 <body>
+  <div id='map'></div>
 
 
   <!--  SEARCHBAR -->
 
   <form autocomplete="off" action="/action_page.php">
     <div class="autocomplete" style="width:300px;">
-      <input id="myInput" type="text" name="myCountry" placeholder="Country">
+      <input id="myInput" type="text" name="myCountry" placeholder="Specie">
     </div>
-    <input type="submit">
+    <input id="myButton" type="button" value="Cerca">
   </form>
-
-
-
-<div id='map'></div>
 
 <!--  LEGENDA ICONE -->
 
@@ -54,9 +51,6 @@
 <!--  LISTA LEGENDA -->
 
 <div id="legend">
-  <div class='filter-ctrl'>
-    <input id='filter-input' type='text' name='filter' placeholder='Cerca per specie' />
-</div>
 
   <ul class="lista-legend">
     <li class="titolo-lista">Forme Biologiche</li>
@@ -85,6 +79,10 @@
   </ul>
 </div>
 
+
+
+<!--  SIDENAV ICONA -->
+
 <div class="container"></div>
       <div onmouseover="openNav()" onclick="closeNav()" id="apri" >
         <div class="icona">
@@ -96,6 +94,7 @@
       </div>
 
 
+      <!--  SIDENAV -->
 
 <div id="mySidenav" class="sidenav">
 
@@ -124,7 +123,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script src="js/highcharts.js"></script>
-<script src="js/specie.js"></script>
 <script src="js/app.js"></script>
 <script src="js/risorse.js"></script>
 <script src="js/main.js"></script>
