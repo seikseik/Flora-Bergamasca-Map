@@ -11,77 +11,91 @@
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css' rel='stylesheet' />
     <link href="https://fonts.googleapis.com/css?family=PT+Serif:400,400i|Roboto:400,500,700" rel="stylesheet">
     <link href ="style.css" rel="stylesheet">
+
     <title>Flora di Bergamo</title>
 
   </head>
 
 <body>
 
+
+  <!--  SEARCHBAR -->
+
+  <form autocomplete="off" action="/action_page.php">
+    <div class="autocomplete" style="width:300px;">
+      <input id="myInput" type="text" name="myCountry" placeholder="Country">
+    </div>
+    <input type="submit">
+  </form>
+
+
+
 <div id='map'></div>
+
+<!--  LEGENDA ICONE -->
+
 <div id= "openLegend" class="off"><?xml version="1.0" encoding="utf-8"?>
   <?xml version="1.0" encoding="utf-8"?>
+    <svg class = "legenda-icon"  version="1.1" id="Livello_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    	 width="80px" height="80px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+             <g>
+          <circle id="cerchio" fill="lightgrey" cx="49.7" cy="49" r="43"/>
+          <polygon class="liv1" stroke-miterlimit="10" points="49.7,44.1 24.1,59.4
+          	49.7,76.7 75.3,59.4 "/>
+          <polygon class="liv2" stroke-miterlimit="10" points="49.7,32.2 24.1,47.5
+          	49.7,64.7 75.3,47.5 "/>
+          <polygon class="liv3" stroke-miterlimit="10" points="49.7,20.2 24.1,35.6
+          	49.7,52.8 75.3,35.6 "/>
+          </g>
 
-<svg class = "legenda-icon"  version="1.1" id="Livello_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="80px" height="80px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
-   <g>
-<circle id="cerchio" fill="lightgrey" cx="49.7" cy="49" r="43"/>
-<polygon class="liv1" stroke-miterlimit="10" points="49.7,44.1 24.1,59.4
-	49.7,76.7 75.3,59.4 "/>
-<polygon class="liv2" stroke-miterlimit="10" points="49.7,32.2 24.1,47.5
-	49.7,64.7 75.3,47.5 "/>
-<polygon class="liv3" stroke-miterlimit="10" points="49.7,20.2 24.1,35.6
-	49.7,52.8 75.3,35.6 "/>
-</g>
-
-</svg>
-
+    </svg>
 </div>
 
+<!--  LISTA LEGENDA -->
 
 <div id="legend">
-
   <div class='filter-ctrl'>
     <input id='filter-input' type='text' name='filter' placeholder='Cerca per specie' />
 </div>
 
   <ul class="lista-legend">
-  <li class="titolo-lista">Forme Biologiche</li>
-  <li><a class="spento" id="0" href="#"><span class="col-li"></span> emicriptofite</a></li>
-  <li><a class="spento" id="1" href="#"><span class="col-li"></span>terofite</a></li>
-  <li><a class="spento" id="2" href="#"><span class="col-li"></span>fanerofita</a></li>
-  <li><a class="spento" id="3" href="#"><span class="col-li"></span>geofite</a></li>
-  <li><a class="spento" id="4" href="#"><span class="col-li"></span>camefite</a></li>
-  <li><a class="spento" id="5" href="#"><span class="col-li"></span>idrofite</a></li>
-  <li><a class="spento" id="6" href="#"><span class="col-li"></span>elofite</a></li>
-  <li class="titolo-lista">Corotipi</li>
-  <li><a class="spento" id="7" href="#"><span class="col-li"></span>eurasiatico</a></li>
-  <li><a class="spento" id="8" href="#"><span class="col-li"></span>europeo</a></li>
-  <li><a class="spento" id="9" href="#"><span class="col-li"></span>mediterraneo</a></li>
-  <li><a class="spento" id="10" href="#"><span class="col-li"></span>eurosibirico</a></li>
-  <li><a class="spento" id="11" href="#"><span class="col-li"></span>circumboreale</a></li>
-  <li><a class="spento" id="12" href="#"><span class="col-li"></span>europeo-montano</a></li>
-  <li><a class="spento" id="13" href="#"><span class="col-li"></span>cosmopolita</a></li>
+    <li class="titolo-lista">Forme Biologiche</li>
+        <li><a class="spento" id="0" href="#"><span class="col-li"></span> emicriptofite</a></li>
+        <li><a class="spento" id="1" href="#"><span class="col-li"></span>terofite</a></li>
+        <li><a class="spento" id="2" href="#"><span class="col-li"></span>fanerofita</a></li>
+        <li><a class="spento" id="3" href="#"><span class="col-li"></span>geofite</a></li>
+        <li><a class="spento" id="4" href="#"><span class="col-li"></span>camefite</a></li>
+        <li><a class="spento" id="5" href="#"><span class="col-li"></span>idrofite</a></li>
+        <li><a class="spento" id="6" href="#"><span class="col-li"></span>elofite</a></li>
+    <li class="titolo-lista">Corotipi</li>
+        <li><a class="spento" id="7" href="#"><span class="col-li"></span>eurasiatico</a></li>
+        <li><a class="spento" id="8" href="#"><span class="col-li"></span>europeo</a></li>
+        <li><a class="spento" id="9" href="#"><span class="col-li"></span>mediterraneo</a></li>
+        <li><a class="spento" id="10" href="#"><span class="col-li"></span>eurosibirico</a></li>
+        <li><a class="spento" id="11" href="#"><span class="col-li"></span>circumboreale</a></li>
+        <li><a class="spento" id="12" href="#"><span class="col-li"></span>europeo-montano</a></li>
+        <li><a class="spento" id="13" href="#"><span class="col-li"></span>cosmopolita</a></li>
 
-  <li class="titolo-lista">Mappa</li>
-  <li><a href="#"><span style="background-color:#D2D9AC;" class="base"></span>colture</a></li>
-  <li><a href="#"><span style="background-color:#7ABEB0;" class="base"></span>aree boscate</a></li>
-  <li><a href="#"><span style="background-color:#B3D6A5;" class="base"></span>giardini e parchi</a></li>
-  <li><a href="#"><span style="background-color:#C98EBF;" class="base"></span>acqua</a></li>
-  <li><a href="#"><span style="background-color:#F0F0F0;" class="base"></span>aree edificate</a></li>
+    <li class="titolo-lista">Mappa</li>
+        <li><a href="#"><span style="background-color:#D2D9AC;" class="base"></span>colture</a></li>
+        <li><a href="#"><span style="background-color:#7ABEB0;" class="base"></span>aree boscate</a></li>
+        <li><a href="#"><span style="background-color:#B3D6A5;" class="base"></span>giardini e parchi</a></li>
+        <li><a href="#"><span style="background-color:#C98EBF;" class="base"></span>acqua</a></li>
+        <li><a href="#"><span style="background-color:#F0F0F0;" class="base"></span>aree edificate</a></li>
   </ul>
 </div>
 
 <div class="container"></div>
+      <div onmouseover="openNav()" onclick="closeNav()" id="apri" >
+        <div class="icona">
+          <svg id ="triangolo" class="" version="1.1" id="Livello_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          	 width="30px" height="30px" viewBox="0 0 110.8 103.8" style="enable-background:new 0 0 110.8 103.8;" xml:space="preserve">
+          <polygon id="XMLID_1_" class="st0" points="73.8,84 18.2,51.9 73.8,19.7 "/>
+          </svg>
+        </div>
+      </div>
 
 
-<div onmouseover="openNav()" onclick="closeNav()" id="apri" >
-  <div class="icona">
-    <svg id ="triangolo" class="" version="1.1" id="Livello_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-    	 width="30px" height="30px" viewBox="0 0 110.8 103.8" style="enable-background:new 0 0 110.8 103.8;" xml:space="preserve">
-    <polygon id="XMLID_1_" class="st0" points="73.8,84 18.2,51.9 73.8,19.7 "/>
-    </svg>
-  </div>
-</div>
 
 <div id="mySidenav" class="sidenav">
 
@@ -101,9 +115,6 @@
   </li>
   </ul>
     <div id="features"></div>
-
-
-
 </div>
 
 
@@ -113,10 +124,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script src="js/highcharts.js"></script>
+<script src="js/specie.js"></script>
 <script src="js/app.js"></script>
 <script src="js/risorse.js"></script>
 <script src="js/main.js"></script>
 
+<script>
+autocomplete(document.getElementById("myInput"), specie);
+</script>
 
 
 </body>

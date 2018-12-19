@@ -4,8 +4,6 @@ html, body {
 }
 
 
-
-
 #map {
     position:fixed;
     top:0;
@@ -13,7 +11,6 @@ html, body {
     width:100%;
     z-index:-1;
 }
-
 
 
 #titolo{
@@ -25,8 +22,6 @@ hr{
   position:relative;
   bottom:20px;
 }
-
-
 
 .slide-over .slideover-content {
   /* display: block; */
@@ -515,8 +510,7 @@ list-style-type: none;
 
 
 
-
-
+/* LEGENDA POLLINI */
 
 .session {
   margin-top: 20px;
@@ -538,4 +532,57 @@ list-style-type: none;
   width: 15%;
   display: inline-block;
   text-align: center;
+}
+
+
+
+
+/*AUTOCOMPLETE FORM  */
+
+
+/* * { box-sizing: border-box; } */
+
+.autocomplete {
+  position: relative;
+  float:right;
+  display: inline-block;
+}
+input {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  float:right;
+  padding: 10px;
+  font-size: 16px;
+}
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 100%;
+}
+input[type=submit] {
+  background-color: DodgerBlue;
+  color: #fff;
+}
+.autocomplete-items {
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+.autocomplete-items div:hover {
+  /*when hovering an item:*/
+  background-color: #e9e9e9;
+}
+.autocomplete-active {
+  /*when navigating through the items using the arrow keys:*/
+  background-color: DodgerBlue !important;
+  color: #ffffff;
 }
