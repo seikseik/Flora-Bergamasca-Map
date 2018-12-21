@@ -242,7 +242,7 @@ var capitoli2 = Object.keys(chapters);
                         0.3, "rgb(209,229,240)",
                         0.6, "yellow",
                         0.8, "orange",
-                        1, "#FF4F05"
+                        1, "#FF4F05"  //#FF0D68
 
                   ],
           'heatmap-radius': {
@@ -446,7 +446,7 @@ function setActiveChapter(chapterName) {
     deleteAll();
     deleteHeat();
     deleteCircles();
-    addCerchio(chapters[chapterName].filtro1, chapters[chapterName].filtro2,chapters[chapterName].colore, chapters[chapterName].nome);
+    addCerchio(chapters[chapterName].filtro1, chapters[chapterName].filtro2,chapters[chapterName].filtro3,chapters[chapterName].colore, chapters[chapterName].nome);
     addHeat(chapters[chapterName].nome2,chapters[chapterName].filtro1, chapters[chapterName].filtro2);
   };
 
@@ -454,7 +454,7 @@ function setActiveChapter(chapterName) {
     deleteAll();
     deleteHeat();
     deleteCircles();
-    addCerchio(chapters[chapterName].filtro1, chapters[chapterName].filtro2,chapters[chapterName].colore, chapters[chapterName].nome);
+    addCerchio(chapters[chapterName].filtro1, chapters[chapterName].filtro2,chapters[chapterName].filtro3,chapters[chapterName].colore, chapters[chapterName].nome);
     addHeat(chapters[chapterName].nome2,chapters[chapterName].filtro1, chapters[chapterName].filtro2);
 
   };
