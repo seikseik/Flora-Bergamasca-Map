@@ -518,19 +518,74 @@ list-style-type: none;
 
 #slider{
   display: block;
-  width:99%;
-  margin-left:1px
-}
+  width:100%;
+padding:2px;}
 
 .colors {
-  background: linear-gradient(to right, #2dc4b2, #3bb3c3, #669ec4, #8b88b6, #a2719b, #aa5e79);
-  margin-bottom: 5px;
+
 }
 
 .label {
   width: 15%;
   display: inline-block;
   text-align: center;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 7px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.legendaSlider{
+  font-family: 'Roboto', sans-serif;
+  padding:0px;
+  padding-top: 30px;
+}
+
+.legendaSlider p{
+  padding:0px;
+  display: contents;
+}
+
+
+.pSpan{
+  display: inline-block;
+  margin-left: 2px;
+  margin-right: 5px;
+  width:10px;
+  height:10px;
+  -moz-border-radius: 50%;
+ -webkit-border-radius: 50%;
+  border-radius: 50%;
 }
 
 

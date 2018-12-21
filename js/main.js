@@ -555,6 +555,8 @@ aa.style.backgroundColor = color[i];
 
 // SLIDER POLLINI
 
+// colori legenda pollinica
+
 
 var months = [
     "Gennaio",

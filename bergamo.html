@@ -284,24 +284,25 @@ Fra le orticacee il genere Parietaria (<i>P. judaica, P. officinalis</i>) rivest
 <h3> Le stagioni polliniche </h3>
 La stagione pollinica va da febbraio a ottobre, ma le quantità più elevate di polline aerodiffuso si riscontrano nel primo semestre (febbraio-luglio), con picchi di concentrazioni fra aprile e maggio, allorché si registra la presenza dei granuli di tutte le famiglie qui considerate. Concordemente con quanto già noto per altre realtà urbane, anche a Bergamo si possono indicare quattro stagioni polliniche fondamentali: la stagione tardo-invernale è caratterizzata dalla pollinazione di cupressacee e betulacee (incluse le corilacee); durante la successiva stagione primaverile (aprile e in subordine maggio) si verifica la massima concentrazione nell'atmosfera dei pollini di betulacee, fagacee, oleacee, graminacee e orticacee, mentre si affievolisce notevolmente la presenza delle cupressacee; in estate si nota la progressiva diminuzione di alcuni pollini primaverili (soprattutto betulacee e orticacee), mentre tende ad aumentare la presenza delle composite, più tardive, che raggiungono il picco in agosto-settembre; durante l'autunno la presenza di pollini diminuisce progressivamente, anche se continua in tono minore quella di composite, graminacee e orticacee, mentre si assiste ad una coda nella pollinazione delle cupressacee (verosimilmente Taxus). Nei primi mesi invernali infine, la presenza di polline aerodiffuso si riduce rapidamente.
 
-<!-- <div class='session'>
-  <h2>Colori famiglie</h2>
-  <div class='row colors'>
-  </div>
-  <div class='row labels'>
-    <div class='label'>0</div>
-    <div class='label'>1</div>
-    <div class='label'>2</div>
-    <div class='label'>3</div>
-    <div class='label'>4</div>
-    <div class='label'>5+</div>
-  </div>
-</div> -->
 
 <div class='session' id='sliderbar'>
   <h2>Mese: <label id='mese-attivo'>Gennaio</label></h2>
-  <input id='slider' class='row' type='range' min='0' max='11' step='1' value='0' />
+  <input id='slider' class='slider' type='range' min='0' max='11' step='1' value='0' />
 </div>
+
+      <div class="legendaSlider">
+        <p>Famiglie:</p> <br>
+            <p class ="pSlider"> Graminaceae<span class="pSpan"></span></p>
+            <p class ="pSlider">Taxaceae <span class="pSpan"></span></p>
+            <p class ="pSlider">Fagaceae<span class="pSpan"></span></p>
+            <p class ="pSlider">Urticaceae<span class="pSpan"></span></p>
+            <p class ="pSlider">Compositae<span class="pSpan"></span></p>
+            <p class ="pSlider">Betulaceae<span class="pSpan"></span></p>
+            <p class ="pSlider">Moraceae<span class="pSpan"></span></p>
+            <p class ="pSlider">Oleaceae<span class="pSpan"></span></p>
+            <p class ="pSlider">Altro<span class="pSpan"></span></p>
+      </div>
+
 
 </section>
 
@@ -310,6 +311,16 @@ La stagione pollinica va da febbraio a ottobre, ma le quantità più elevate di 
 
 
 <script type="text/javascript">
+
+  let afterClass = document.querySelectorAll(".pSpan");
+  var coloriPollini =['#FF007F','#004FFF','#28965A','#FF9000','#99007F','#00D300','#FF1C1C'];
+
+  $(document).ready(function () {
+    for(let a = 0; a < afterClass.length; a++){
+      afterClass[a].style["background-color"] = coloriPollini[a];
+  }
+     });
+
 
 Highcharts.chart('container', {
 chart: {
