@@ -1,19 +1,32 @@
-// let tastoSearch = document.querySelector('#openSearch');
-// tastoSearch.addEventListener("click", function(e){
-// if(tastoSearch.classList.contains("off")){
-//
-//     document.getElementById("searchbar").style.right = "10px";
-//     tastoSearch.classList.remove("off");
-//     tastoSearch.classList.add("on");
-//
-//
-// } else if(tastoSearch.classList.contains("on")){
-//   document.getElementById("searchbar").style.right = "-250px";
-//   tastoSearch.classList.remove("on");
-//   tastoSearch.classList.add("off");
-//
-// }
-// })
+// TUTORIAL ONLOAD
+
+// $(function() {
+//         $("#openLegend").popover('show');
+//     $(".popover").on('click', function () {
+//         $('#openLegend').popover('hide');
+//     });
+//  });
+
+function popoverLegenda(){
+  $("#openLegend").popover('show');
+  $(".popover").on('click', function () {
+    $('#openLegend').popover('hide');
+  });
+}
+
+function popoverSide(){
+  $("#apri").popover('show');
+  $(".popover-body").on('click', function () {
+    $('#apri').popover('hide');
+  });
+}
+
+function popoverSearch(){
+  $("#myButton").popover('show');
+  $(".popover-body").on('click', function () {
+    $('#myButton').popover('hide');
+  });
+}
 
 
 

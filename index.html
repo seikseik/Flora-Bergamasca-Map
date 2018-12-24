@@ -20,20 +20,30 @@
   <div id='map'></div>
 
 
+<div class = "tutorial">
+    <h2> MAPPA INTERATTIVA </h2>
+      <p>Questa è una mappa che fa cose</p>
+      <div class = "step"> <span id ="backSpan"> << </span> <span id ="nSpan"> 1 </span> <span id ="fwSpan"> >> </span> </div>
+      <div class = "skip"> SALTA </div>
+</div>
+
   <!--  SEARCHBAR -->
 
   <form autocomplete="off" action="/action_page.php">
     <div class="autocomplete" style="width:240px;">
       <input id="myInput" type="text" name="myCountry" placeholder="Specie..." onfocus="this.value=''">
     </div>
-    <button class = "search" id="myButton" type="button" value="Cerca">Cerca</button>
+    <button class = "search" id="myButton" type="button" value="Cerca" data-content="Da quì puoi cercare le posizioni di tutte le specie presenti sul territorio"
+                    data-original-title="Ricerca per specie">Cerca</button>
     <button class = "search" id="myButtonDelete" type="button" value="Cancella">Canc</button>
 
   </form>
 
 <!--  LEGENDA ICONE -->
 
-<div id= "openLegend" class="off"><?xml version="1.0" encoding="utf-8"?>
+<div id= "openLegend" class="off" data-content="Questa è una legenda interattiva che ti permette di visualizzare i corotipi e tipi biologici"
+                data-original-title="Legenda interattiva">
+
   <?xml version="1.0" encoding="utf-8"?>
     <svg class = "legenda-icon"  version="1.1" id="Livello_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
     	 width="80px" height="80px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
@@ -77,7 +87,6 @@
         <li><a href="#"><span style="background-color:#7ABEB0;" class="base"></span>aree boscate</a></li>
         <li><a href="#"><span style="background-color:#B3D6A5;" class="base"></span>giardini e parchi</a></li>
         <li><a href="#"><span style="background-color:#C98EBF;" class="base"></span>acqua</a></li>
-        <li><a href="#"><span style="background-color:#F0F0F0;" class="base"></span>aree edificate</a></li>
   </ul>
 </div>
 
@@ -86,7 +95,7 @@
 <!--  SIDENAV ICONA -->
 
 <div class="container"></div>
-      <div onmouseover="openNav()" onclick="closeNav()" id="apri" >
+      <div onmouseover="openNav()" onclick="closeNav()" id="apri" data-content="Quì potrai trovare un racconto che ti guiderà passo passo alla scoperta del territorio e delle sue caratteristiche botaniche" data-original-title="Scopri il territorio di Bergamo">
         <div class="icona">
           <svg id ="triangolo" class="" version="1.1" id="Livello_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
           	 width="30px" height="30px" viewBox="0 0 110.8 103.8" style="enable-background:new 0 0 110.8 103.8;" xml:space="preserve">

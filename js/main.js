@@ -520,7 +520,7 @@ function isElementOnScreenTitolo(id) {
 
 //  LEGENDA
 let lista = ['liv-bio2','liv-bio3','liv-bio4','liv-bio5','liv-bio6','liv-bio7','liv-bio8','liv-cor2','liv-cor3','liv-cor4','liv-cor5','liv-cor6','liv-cor7','liv-cor8'];
-let color = ['#FF007F','#004FFF','#28965A','#FF9000','#99007F','#00D300','#FF1C1C','#FF007F','#004FFF','#28965A','#FF9000','#99007F','#00D300','#FF1C1C'];
+let color = ['#FF00FF','#004FFF','#28965A','#FF4500','#800080','#00baff','#FFA500','#FF00FF','#004FFF','#28965A','#FF4500','#800080','#00baff','#FFA500'];
 
 document.querySelector(".lista-legend").addEventListener("click", function(e){
 
@@ -546,6 +546,7 @@ for(let i = 0; i < listaLi.length; i++){
 let aa = listaLi[i];
 let bb = color[i];
 aa.style.backgroundColor = color[i];
+
 }
 
 
@@ -592,15 +593,14 @@ function sliderPollini(){
           'circle-color': [
                 'match',
                 ['get', 'famiglia'],
-                'graminaceae', '#fbb03b',
-                'betulaceae', 'blue',
-                'oleaceae', '#e55e5e',
-                'fagaceae', '#3bb2d0',
-                'compositae', 'red',
-                'urticaceae', 'green',
-                'moraceae', 'green',
-                'amaranthaceae', 'brown',
-                /* altro */ "lightgrey"
+                'graminaceae', '#FF00FF',
+                'betulaceae', '#004FFF',
+                'oleaceae', '#28965A',
+                'fagaceae', '#FF4500',
+                'compositae', '#800080',
+                'urticaceae', '#00baff',
+                'moraceae', '#FFA500',
+                /* altro */ "grey"
             ]
       },
   });
@@ -1843,9 +1843,10 @@ document.addEventListener("click", function (e) {
 
 
 
+
 // crea livello su ricerca
 let livelliRicerca =[];
-let coloreRicerca = ['#FF007F','#004FFF','#28965A','#FF9000','#99007F'];
+let coloreRicerca = ['#FF00FF','#004FFF','#28965A','#FF4500','#800080'];
 let counter = 0;
 let inp2 = document.getElementById("myButton");
 
