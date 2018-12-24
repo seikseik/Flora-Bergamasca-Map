@@ -3,7 +3,6 @@ html, body {
     overflow-x: hidden;
 }
 
-
 #map {
     position:fixed;
     top:0;
@@ -25,6 +24,7 @@ hr{
 /* tutorial */
 
 .tutorial{
+  display: none;
   width: 600px;
   height: 400px;
   background-color: whitesmoke;
@@ -35,9 +35,12 @@ hr{
   transform: translate(-50%, -50%);
 }
 
+
+
 .tutorial h2{
   font-family: 'Roboto', sans-serif;
-  font-size: 25px;
+  font-weight: 500;
+  font-size: 20px;
   padding: 20px;
   align-content: center;
 }
@@ -49,25 +52,34 @@ hr{
 
 .step{
   font-family: 'Roboto', sans-serif;
-  font-size : 25px;
+  font-weight: 500;
+  color: #383838;
+  font-size : 20px;
   position: fixed;
   bottom: 0%;
   right: 0%;
   padding: 15px;
   padding-right: 25px;
+  cursor: pointer;
 }
+
 
 .skip{
   font-family: 'Roboto', sans-serif;
-  font-size : 25px;
+  font-weight: 500;
+  color: #383838;
+  font-size : 20px;
   position: fixed;
   bottom: 0%;
   left: 0%;
   padding: 15px;
-  padding-right: 25px;
+  padding-left: 25px;
+  cursor: pointer;
 }
 
-
+.step:hover, .skip:hover{
+  color: grey;
+}
 
 
 .slide-over .slideover-content {
