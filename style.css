@@ -22,11 +22,25 @@ hr{
 }
 
 /* tutorial */
+.popover{
+border-radius: .1rem;
+}
+.popover-body{
+  font-family: 'Roboto', sans-serif;
+background-color: white;
+font-size: 15px;
+}
+.popover-header{
+  font-family: 'Roboto', sans-serif;
+background-color: white;
+font-size: 15px;
+
+}
 
 .tutorial{
   display: none;
-  width: 600px;
-  height: 400px;
+  width: 50%;
+  height: 50%;
   background-color: whitesmoke;
   border: 1px solid darkgrey;
   position: fixed;
@@ -34,8 +48,6 @@ hr{
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
-
 
 .tutorial h2{
   font-family: 'Roboto', sans-serif;
@@ -45,9 +57,9 @@ hr{
   align-content: center;
 }
 
-.tutorial p{
+.testo-intro{
+  font-family: 'PT Serif', serif;
   padding: 20px;
-  align-content: center;
 }
 
 .step{
@@ -62,7 +74,6 @@ hr{
   padding-right: 25px;
   cursor: pointer;
 }
-
 
 .skip{
   font-family: 'Roboto', sans-serif;
@@ -123,6 +134,7 @@ hr{
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
+    html,body{overflow-x: hidden;}
 }
 
 /* TASTO APERTURA SIDENAV */
@@ -661,7 +673,9 @@ padding:2px;}
 
 
 /*AUTOCOMPLETE FORM  */
-
+#barra{
+  -webkit-overflow-scrolling: touch;
+}
 .autocomplete {
   position: relative;
   float:right;

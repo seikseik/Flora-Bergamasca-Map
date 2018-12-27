@@ -16,11 +16,13 @@ let countX = 0;
 
 var isshow=0;
 $(document).ready(function() {
+  if(window.innerWidth > 760){
     // var isshow = localStorage.getItem('isshow');
     // if (isshow== null) {
     //     localStorage.setItem('isshow', 1);
         document.querySelector(".tutorial").style.display = "block";
     // }
+    }
 });
 
 d.addEventListener("click", function(){
