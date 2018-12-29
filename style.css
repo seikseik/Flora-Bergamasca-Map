@@ -137,6 +137,7 @@ font-size: 15px;
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
     html,body{overflow-x: hidden;}
+    .
 }
 
 /* TASTO APERTURA SIDENAV */
@@ -184,6 +185,7 @@ font-size: 15px;
   .attivo{display:none;}
   .icona {display:none;}
    #apri{display:none;}
+   #openLegend{display: none;}
 }
 
 
