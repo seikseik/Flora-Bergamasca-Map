@@ -89,6 +89,41 @@ function deleteAll(){
 
 
 
+
+// FUNZIONE POPUP
+
+function popup(e, nome){
+  var features = map.queryRenderedFeatures(e.point, {
+    layers: [nome] // replace this with the name of the layer
+  });
+
+  if (!features.length) {
+    return;
+  }
+  var feature = features[0];
+  var popup = new mapboxgl.Popup({ offset: [0, -15] })
+    .setLngLat(feature.geometry.coordinates)
+    .setHTML('<div id=\'popup\' class=\'popup\' style=\'z-index: 10;\'>' +
+              '<ul>' +
+              '<li> Nome: ' + feature.properties['nome-completo'] + ' </li>' +
+              '<li> Famiglia: ' + feature.properties['famiglia'] + ' </li>' +
+              '<li> Corotipo:  ' + feature.properties['corotipi'] + ' </li>' +
+              '<li> Forma biologica:  ' + feature.properties['forma-bio-semp'] + ' </li>' +
+              '<li> <a target="_blank" href="https://www.actaplantarum.org/galleria_flora/galleria1.php?lista=0&mode=1&cat=24&cid=73&aid='+feature.properties['link']+'">Actaplantarum</a></li></ul></div>')
+    .setLngLat(feature.geometry.coordinates)
+    .addTo(map);
+
+    // remove popup
+    let listaP = document.getElementsByClassName("mapboxgl-popup");
+    if(popup.isOpen() && listaP.length > 1){
+      for (var i = listaP.length - 1; i >= 1; --i) {
+        listaP[i].parentNode.removeChild(listaP[i]);
+        }
+      }
+}
+
+
+
 //LIVELLO GEOLOGIA/POLIGONI
 function addPoligono(nome2, coordinate, colore2){
 map.addLayer({
@@ -160,36 +195,7 @@ var capitoli = Object.keys(chapters);
 
           // POPUP
               map.on('click', function(e) {
-                var features = map.queryRenderedFeatures(e.point, {
-                  layers: [nome] // replace this with the name of the layer
-                });
-
-                if (!features.length) {
-                  return;
-                }
-
-
-
-                var feature = features[0];
-                var popup = new mapboxgl.Popup({ offset: [0, -15] })
-                  .setLngLat(feature.geometry.coordinates)
-                  .setHTML('<div id=\'popup\' class=\'popup\' style=\'z-index: 10;\'>' +
-                            '<ul>' +
-                            '<li> Nome: ' + feature.properties['nome-completo'] + ' </li>' +
-                            '<li> Famiglia: ' + feature.properties['famiglia'] + ' </li>' +
-                            '<li> Corotipo:  ' + feature.properties['corotipi'] + ' </li>' +
-                            '<li> Forma biologica:  ' + feature.properties['forma-bio-semp'] + ' </li>' +
-                            '<li> <a target="_blank" href="https://www.actaplantarum.org/galleria_flora/galleria1.php?lista=0&mode=1&cat=24&cid=73&aid='+feature.properties['link']+'">Actaplantarum</a></li></ul></div>')
-                  .setLngLat(feature.geometry.coordinates)
-                  .addTo(map);
-
-                  // remove popup
-                  let listaP = document.getElementsByClassName("mapboxgl-popup");
-                  if(popup.isOpen() && listaP.length > 1){
-                    for (var i = listaP.length - 1; i >= 1; --i) {
-                      listaP[i].parentNode.removeChild(listaP[i]);
-                      }
-                    }
+              popup(e, nome);
                  });
 
 
@@ -242,7 +248,7 @@ var capitoli2 = Object.keys(chapters);
                         0.3, "rgb(209,229,240)",
                         0.6, "yellow",
                         0.8, "orange",
-                        1, "#FF4F05"  //#FF0D68
+                        1, "#ff3600"  //#FF0D68 
 
                   ],
           'heatmap-radius': {
@@ -254,7 +260,7 @@ var capitoli2 = Object.keys(chapters);
           'heatmap-opacity': {
             default: 1,
             stops: [
-              [14, 0.9],
+              [14, 0.95],
               [15, 0]
             ]
           },
@@ -310,34 +316,7 @@ var capitoli = Object.keys(chapters);
 
           // POPUP
               map.on('click', function(e) {
-                var features = map.queryRenderedFeatures(e.point, {
-                  layers: [nome] // replace this with the name of the layer
-                });
-
-                if (!features.length) {
-                  return;
-                }
-
-                var feature = features[0];
-                var popup = new mapboxgl.Popup({ offset: [0, -15] })
-                  .setLngLat(feature.geometry.coordinates)
-                  .setHTML('<div id=\'popup\' class=\'popup\' style=\'z-index: 10;\'>' +
-                            '<ul>' +
-                            '<li> Nome: ' + feature.properties['nome-completo'] + ' </li>' +
-                            '<li> Famiglia: ' + feature.properties['famiglia'] + ' </li>' +
-                            '<li> Corotipo:  ' + feature.properties['corotipi'] + ' </li>' +
-                            '<li> Forma biologica:  ' + feature.properties['forma-bio-semp'] + ' </li>' +
-                            '<li> <a target="_blank" href="https://www.actaplantarum.org/galleria_flora/galleria1.php?lista=0&mode=1&cat=24&cid=73&aid='+feature.properties['link']+'">Actaplantarum</a></li></ul></div>')
-                  .setLngLat(feature.geometry.coordinates)
-                  .addTo(map);
-
-                  // remove popup
-                  let listaP = document.getElementsByClassName("mapboxgl-popup");
-                  if(popup.isOpen() && listaP.length > 1){
-                    for (var i = listaP.length - 1; i >= 1; --i) {
-                      listaP[i].parentNode.removeChild(listaP[i]);
-                      }
-                    }
+                popup(e,nome);
                  });
 
 
@@ -356,7 +335,7 @@ var capitoli = Object.keys(chapters);
 
 
 //  LIVELLO LEGENDA
-function addLegenda(filtro1, filtro2, colore, nome){
+function addLegenda(filtro1, filtro2, filtro3, colore, nome){
 var capitoli = Object.keys(chapters);
 
     map.addLayer({
@@ -379,39 +358,21 @@ var capitoli = Object.keys(chapters);
           },
       },livelloLabel);
 
-      map.setFilter( nome, ['==', filtro1, filtro2]);
+      // map.setFilter( nome, ['==', filtro1, filtro2]);
+
+      map.setFilter( nome, ["==",filtro1, filtro2]);
+
+      map.setFilter( nome, [
+    "any",
+    ["==", filtro1, filtro2],
+    ["==", filtro1, filtro3],
+
+    ]);
 
 
           // POPUP
               map.on('click', function(e) {
-                var features = map.queryRenderedFeatures(e.point, {
-                  layers: [nome] // replace this with the name of the layer
-                });
-
-                if (!features.length) {
-                  return;
-                }
-
-                var feature = features[0];
-                var popup = new mapboxgl.Popup({ offset: [0, -15] })
-                  .setLngLat(feature.geometry.coordinates)
-                  .setHTML('<div id=\'popup\' class=\'popup\' style=\'z-index: 10;\'>' +
-                            '<ul>' +
-                            '<li> Nome: ' + feature.properties['nome-completo'] + ' </li>' +
-                            '<li> Famiglia: ' + feature.properties['famiglia'] + ' </li>' +
-                            '<li> Corotipo:  ' + feature.properties['corotipi'] + ' </li>' +
-                            '<li> Forma biologica:  ' + feature.properties['forma-bio-semp'] + ' </li>' +
-                            '<li> <a target="_blank" href="https://www.actaplantarum.org/galleria_flora/galleria1.php?lista=0&mode=1&cat=24&cid=73&aid='+feature.properties['link']+'">Actaplantarum</a></li></ul></div>')
-                  .setLngLat(feature.geometry.coordinates)
-                  .addTo(map);
-
-                  // remove popup
-                  let listaP = document.getElementsByClassName("mapboxgl-popup");
-                  if(popup.isOpen() && listaP.length > 1){
-                    for (var i = listaP.length - 1; i >= 1; --i) {
-                      listaP[i].parentNode.removeChild(listaP[i]);
-                      }
-                    }
+                popup(e,nome);
                  });
 
 
@@ -528,7 +489,7 @@ if(e.target.classList.contains("spento")){
 
   e.target.classList.remove("spento");
   e.target.classList.add("active");
-  addLegenda(chapters[lista[e.target.id]].filtro1, chapters[lista[e.target.id]].filtro2, color[e.target.id], chapters[lista[e.target.id]].nome);
+  addLegenda(chapters[lista[e.target.id]].filtro1, chapters[lista[e.target.id]].filtro2, chapters[lista[e.target.id]].filtro3, color[e.target.id], chapters[lista[e.target.id]].nome);
 
 } else if(e.target.classList.contains("active")){
   e.target.classList.remove("active");
@@ -678,6 +639,7 @@ function sliderPollini(){
 // AGGIUNGI LIVELLO ricerca
 
 function addRicerca(nome, coloreRicerca){
+
 map.addLayer({
       'id': nome,
       'type': 'circle',
@@ -702,35 +664,7 @@ map.addLayer({
 
       // POPUP
           map.on('click', function(e) {
-            var features = map.queryRenderedFeatures(e.point, {
-              layers: [nome] // replace this with the name of the layer
-            });
-
-            if (!features.length) {
-              return;
-            }
-
-
-            var feature = features[0];
-            var popup = new mapboxgl.Popup({ offset: [0, -15] })
-              .setLngLat(feature.geometry.coordinates)
-              .setHTML('<div id=\'popup\' class=\'popup\' style=\'z-index: 10;\'>' +
-                        '<ul>' +
-                        '<li> Nome: ' + feature.properties['nome-completo'] + ' </li>' +
-                        '<li> Famiglia: ' + feature.properties['famiglia'] + ' </li>' +
-                        '<li> Corotipo:  ' + feature.properties['corotipi'] + ' </li>' +
-                        '<li> Forma biologica:  ' + feature.properties['forma-bio-semp'] + ' </li>' +
-                        '<li> <a target="_blank" href="https://www.actaplantarum.org/galleria_flora/galleria1.php?lista=0&mode=1&cat=24&cid=73&aid='+feature.properties['link']+'">Actaplantarum</a></li></ul></div>')
-              .setLngLat(feature.geometry.coordinates)
-              .addTo(map);
-
-              // remove popup
-              let listaP = document.getElementsByClassName("mapboxgl-popup");
-              if(popup.isOpen() && listaP.length > 1){
-                for (var i = listaP.length - 1; i >= 1; --i) {
-                  listaP[i].parentNode.removeChild(listaP[i]);
-                  }
-                }
+            popup(e, nome)
              });
 
 
