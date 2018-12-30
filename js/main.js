@@ -248,7 +248,7 @@ var capitoli2 = Object.keys(chapters);
                         0.3, "rgb(209,229,240)",
                         0.6, "yellow",
                         0.8, "orange",
-                        1, "#ff3600"  //#FF0D68 
+                        1, "#ff3600"  //#FF0D68
 
                   ],
           'heatmap-radius': {
@@ -1774,7 +1774,6 @@ document.addEventListener("click", function (e) {
     closeAllLists(e.target);
 });
 }
-
 
 
 

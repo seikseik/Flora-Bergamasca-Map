@@ -159,7 +159,7 @@ font-size: 15px;
   font-size:30px;
   line-height: 0px;
   display:flex;
-  color:black;
+  color:#585858;
   position:absolute;
   z-index: 1000;
   padding-bottom:3px;
@@ -177,7 +177,7 @@ font-size: 15px;
 
 }
 
-.st0{stroke:grey; stroke-width:1;}
+.st0{fill:#585858; stroke:#585858; stroke-width:1;}
 
 
 
@@ -437,6 +437,13 @@ object-fit: cover;
 
 /* legenda */
 
+#openInfo{
+  position: absolute;
+  left: 10px;
+  bottom: 40px;
+  cursor:pointer;
+}
+
 #openLegend{
   position: absolute;
   right: 10px;
@@ -559,7 +566,7 @@ list-style-type: none;
 
 .liv1{
   fill:#BEBEBE;
-  stroke:#404040	;
+  stroke:#585858;
   stroke-width:2;
   transition-duration: .1s;
   transition-timing-function: ease-out;
@@ -567,14 +574,15 @@ list-style-type: none;
 
 .liv2{
   fill:#BEBEBE;
-  stroke:#404040	;
+  stroke:#585858;
   stroke-width:2;
 }
 
+/* #404040 */
 
 .liv3{
   fill:#BEBEBE;
-  stroke:#404040	;
+  stroke:#585858;
   stroke-width:2;
   transition-duration: .1s;
   transition-timing-function: ease-out;

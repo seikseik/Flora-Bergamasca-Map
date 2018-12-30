@@ -1,6 +1,5 @@
 // TUTORIAL ONLOAD
 
-
 function openPopover(id){
   $(id).popover('show');
   countX= 1;
@@ -10,6 +9,7 @@ function openPopover(id){
    });
 }
 
+
 let b = document.querySelector(".step");
 let d = document.querySelector(".skip");
 let countX = 0;
@@ -17,11 +17,11 @@ let countX = 0;
 var isshow=0;
 $(document).ready(function() {
   if(window.innerWidth > 760){
-    // var isshow = localStorage.getItem('isshow');
-    // if (isshow== null) {
-    //     localStorage.setItem('isshow', 1);
+    var isshow = localStorage.getItem('isshow');
+    if (isshow== null) {
+        localStorage.setItem('isshow', 1);
         document.querySelector(".tutorial").style.display = "block";
-    // }
+      }
     }
 });
 
@@ -31,6 +31,8 @@ d.addEventListener("click", function(){
    $(a).popover('dispose');
 });
 
+
+
 b.addEventListener("click",function(){
     openPopover("#myButton");
     openPopover("#openLegend");
@@ -38,6 +40,11 @@ b.addEventListener("click",function(){
 });
 
 
+let info = document.querySelector('#openInfo');
+
+info.addEventListener("click", function(e){
+  document.querySelector(".tutorial").style.display = "block";
+});
 
 
 let tastolegenda = document.querySelector('#openLegend');
