@@ -361,7 +361,6 @@ var capitoli = Object.keys(chapters);
       // map.setFilter( nome, ['==', filtro1, filtro2]);
 
       map.setFilter( nome, ["==",filtro1, filtro2]);
-
       map.setFilter( nome, [
     "any",
     ["==", filtro1, filtro2],
@@ -516,9 +515,7 @@ aa.style.backgroundColor = color[i];
 
 
 // SLIDER POLLINI
-
 // colori legenda pollinica
-
 
 var months = [
     "Gennaio",
@@ -534,8 +531,6 @@ var months = [
     "Novembre",
     "Dicembre"
 ];
-
-
 
 function sliderPollini(){
 

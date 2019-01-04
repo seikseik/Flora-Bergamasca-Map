@@ -64,6 +64,15 @@ font-size: 15px;
   padding: 20px;
 }
 
+.testo-intro a{
+  color:#212529;
+  text-decoration:underline;"
+}
+
+.testo-intro a:hover{
+  text-decoration:none;
+}
+
 .step{
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
@@ -186,6 +195,8 @@ font-size: 15px;
   .icona {display:none;}
    #apri{display:none;}
    #openLegend{display: none;}
+   #openInfo{display: none;}
+
 }
 
 
@@ -351,7 +362,7 @@ object-fit: cover;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   line-height: 22px;
-  width:300px;
+  width:400px;
   color:#404040;
 }
 
@@ -359,7 +370,7 @@ object-fit: cover;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   line-height: 22px;
-  width:300px;
+  width:400px;
   color:#404040;
 }
 
