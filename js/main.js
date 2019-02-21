@@ -53,7 +53,6 @@ side.onscroll = function() {
           $("#ringTabDrop").text("Specie Allergeniche");}
 
 
-
   var chapterNames = Object.keys(chapters);
   for (var i = 0; i < chapterNames.length; i++) {
       var chapterName = chapterNames[i];
@@ -208,7 +207,6 @@ var capitoli = Object.keys(chapters);
              map.getCanvas().style.cursor = '';
          });
 
-
     arrayCircle.push(nome);
 };
 
@@ -248,7 +246,7 @@ var capitoli2 = Object.keys(chapters);
                         0.3, "rgb(209,229,240)",
                         0.6, "yellow",
                         0.8, "orange",
-                        1, "#ff3600"  //#FF0D68
+                        1, "#FF4500"  //#FF0D68
 
                   ],
           'heatmap-radius': {
@@ -319,7 +317,6 @@ var capitoli = Object.keys(chapters);
                 popup(e,nome);
                  });
 
-
       // Change the cursor to a pointer when the mouse is over the places layer.
          map.on('mouseenter', nome, function () {
              map.getCanvas().style.cursor = 'pointer';
@@ -329,9 +326,9 @@ var capitoli = Object.keys(chapters);
              map.getCanvas().style.cursor = '';
          });
 
-
       arrayAll.push(nome);
 };
+
 
 
 //  LIVELLO LEGENDA
@@ -353,7 +350,7 @@ var capitoli = Object.keys(chapters);
               'circle-stroke-color': 'white',
               'circle-stroke-width': 0.2,
               'circle-color': colore,
-              'circle-opacity': 0.3
+              'circle-opacity': 1
               // 'circle-blur': 0.2
           },
       },livelloLabel);
@@ -479,8 +476,8 @@ function isElementOnScreenTitolo(id) {
 
 
 //  LEGENDA
-let lista = ['liv-bio2','liv-bio3','liv-bio4','liv-bio5','liv-bio6','liv-bio7','liv-bio8','liv-cor2','liv-cor3','liv-cor4','liv-cor5','liv-cor6','liv-cor7','liv-cor8'];
-let color = ['#FF00FF','#004FFF','#28965A','#FF4500','#800080','#00baff','#FFA500','#FF00FF','#004FFF','#28965A','#FF4500','#800080','#00baff','#FFA500'];
+let lista = ['liv-bio2','liv-bio3','liv-bio4','liv-bio5','liv-bio6','liv-bio7','liv-cor2','liv-cor3','liv-cor4','liv-cor5','liv-cor6','liv-cor7','liv-cor8'];
+let color = ['#FF00FF','#004FFF','#28965A','#FF4500','#800080','#00baff','#FF00FF','#004FFF','#28965A','#FF4500','#800080','#00baff','#FFA500'];
 
 document.querySelector(".lista-legend").addEventListener("click", function(e){
 
@@ -501,7 +498,6 @@ if(e.target.classList.contains("spento")){
 //  aggiunta colori legenda
 
 let listaLi= document.querySelectorAll(".col-li")
-// console.log(listaLi);
 for(let i = 0; i < listaLi.length; i++){
 let aa = listaLi[i];
 let bb = color[i];
@@ -645,7 +641,7 @@ map.addLayer({
       'paint': {
         'circle-radius': {
             'base': 2,
-            'stops': [[12, 4], [22, 200]]
+            'stops': [[12, 3.5], [22, 200]]
         },
           'circle-stroke-color': 'white',
           'circle-stroke-width': 0.2,
@@ -1669,6 +1665,7 @@ var specie = [
   "Xanthium italicum Moretti",
   "Zea mays L."
 ];
+
 let arr = specie;
 
 function autocomplete(inp, arr) {
@@ -1777,22 +1774,47 @@ let livelliRicerca =[];
 let coloreRicerca = ['#FF00FF','#004FFF','#28965A','#FF4500','#800080'];
 let counter = 0;
 let inp2 = document.getElementById("myButton");
+let aa = document.getElementById("lista-search");
 
 inp2.addEventListener("click",function(){
   let nomeRicerca = inp.value;
 addRicerca(nomeRicerca, coloreRicerca[counter]);
-counter++;
+
     if(counter>=5){
         counter = 0;
     }
-    document.getElementById("myButtonDelete").style.display = "block";
-})
 
+    document.getElementById("myButtonDelete").style.display = "block";
+    let li = document.createElement("li");
+    let sp = document.createElement("span");
+    sp.setAttribute("style", `background-color: ${coloreRicerca[counter]}`);
+    li.appendChild(document.createTextNode(nomeRicerca));
+    document.getElementById("legendaSearch").style.height = "auto";
+    document.getElementById("legendaSearch").style.display = "block";
+    li.setAttribute("class", "livelloLegenda");
+    li.appendChild(sp);
+    aa.appendChild(li);
+
+counter++;
+
+});
+
+
+let cc = document.getElementById("lista-search");
+let child = cc.children;
 let inp3 = document.getElementById("myButtonDelete");
 inp3.addEventListener("click",function(){
+
+    document.getElementById("myButtonDelete").style.display = "none";
+    document.getElementById("legendaSearch").style.display = "none";
+
+    for(var i = child.length - 1; i >= 0; i--){
+       child[i].remove();
+       document.getElementById("legendaSearch").style.height = "0px";
+    }
+
     for(a = 0; a < livelliRicerca.length; a++){
         map.removeLayer(livelliRicerca[a]);
     }
-    document.getElementById("myButtonDelete").style.display = "none";
 
 });

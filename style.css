@@ -297,11 +297,14 @@ section {
     padding:  50px 15px;
     padding-left: 25px;
     line-height: 25px;
-    width:480px;
+    width:500px;
+    padding-right: 35px;
     border-bottom: 1px solid #ddd;
     opacity: 0.25;
     font-size: 15px;
+    overflow-x: hidden;
 }
+
 
 
 #container{
@@ -509,8 +512,8 @@ list-style-type: none;
        border-bottom: 1px solid rgba(0,0,0,0.1);
        text-align: right;
        vertical-align: baseline;
-
    }
+
 
    #legend li:last-child {
        border: none;
@@ -771,4 +774,48 @@ input[type=text]:focus {
 .autocomplete-active {
   background-color: DodgerBlue !important;
   color: #ffffff;
+}
+
+#legendaSearch{
+  background: #F9F9F9;
+  position: absolute;
+  display: none;
+  z-index: 1;
+  bottom: 40px;
+  left: 10px;
+  border-radius: 3px;
+  width: 280px;
+  padding-top:10px;
+  margin: 0;
+  border: 1px solid rgba(0,0,0,0.2);
+  font-family: 'Roboto', sans-serif;
+  transition-duration: .4s;
+}
+
+
+#legendaSearch span{
+  width:11px;
+  height:11px;
+  display:inline-block;
+  float:left;
+  border-radius: 50%;
+}
+
+#legendaSearch ul{
+padding:0px;
+list-style-type: none;
+}
+
+#legendaSearch li {
+    font-size: 13px;
+    line-height: 14px;
+    color: #404040;
+    display: block;
+    margin: 0px;
+    padding: 0px;
+    padding: 12px;
+    padding-right: 20px;
+    text-decoration: none;
+    /* border-bottom: 1px solid rgba(0,0,0,0.1); */
+    text-align: right;
 }

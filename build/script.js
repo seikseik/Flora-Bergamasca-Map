@@ -2954,6 +2954,8 @@ let livelliRicerca =[];
 let coloreRicerca = ['#FF00FF','#004FFF','#28965A','#FF4500','#800080'];
 let counter = 0;
 let inp2 = document.getElementById("myButton");
+let aa = document.getElementById("lista-search");
+let li = document.createElement("li");
 
 inp2.addEventListener("click",function(){
   let nomeRicerca = inp.value;
@@ -2963,7 +2965,12 @@ counter++;
         counter = 0;
     }
     document.getElementById("myButtonDelete").style.display = "block";
-})
+    // li.appendChild(document.createTextNode("Four"));
+    aa.appendChild(li);
+    console.log("ciao");
+});
+
+
 
 let inp3 = document.getElementById("myButtonDelete");
 inp3.addEventListener("click",function(){
