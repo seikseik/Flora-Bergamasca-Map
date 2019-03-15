@@ -1,15 +1,5 @@
 // TUTORIAL ONLOAD
 
-function openPopover(id){
-  $(id).popover('show');
-  countX= 1;
-  $(".popover").on('click', function () {
-    let a = document.querySelectorAll(".popover");
-     $(a).popover('dispose');
-   });
-}
-
-
 let b = document.querySelector(".step");
 let d = document.querySelector(".skip");
 let countX = 0;
@@ -25,19 +15,43 @@ $(document).ready(function() {
     }
 });
 
+
+function openPopover(id){
+  $(id).popover('show');
+  countX= 1;
+  // $(".popover").on('click', function () {
+  //   let a = document.querySelectorAll(".popover");
+  //    $(a).popover('dispose');
+  //  });
+
+   $("#map").on('click', function () {
+     let a = document.querySelectorAll(".popover");
+      $(a).popover('dispose');
+    });
+    $(".popover").on('click', function () {
+      let a = document.querySelectorAll(".popover");
+       $(a).popover('dispose');
+     });
+
+
+}
+
+
+
 d.addEventListener("click", function(){
   $(".tutorial").fadeOut("fast");
   let a = document.querySelectorAll(".popover");
    $(a).popover('dispose');
 });
 
-
-
 b.addEventListener("click",function(){
     openPopover("#myButton");
     openPopover("#openLegend");
     openPopover("#apri");
 });
+
+
+
 
 
 let info = document.querySelector('#openInfo');
@@ -91,7 +105,6 @@ function closeNav() {
 $("#ring_contents li a").click(function(){
   $("#ringTabDrop").text($(this).text());
 });
-
 
 $(document).ready(function () {
          $("#features").load("./bergamo.html");

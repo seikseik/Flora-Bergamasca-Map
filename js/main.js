@@ -1777,9 +1777,12 @@ let inp2 = document.getElementById("myButton");
 let aa = document.getElementById("lista-search");
 
 inp2.addEventListener("click",function(){
+  if( inp.value == ""){
+    inp.value = "tutte le specie"
+  }
+  console.log(inp.value);
   let nomeRicerca = inp.value;
 addRicerca(nomeRicerca, coloreRicerca[counter]);
-
     if(counter>=5){
         counter = 0;
     }
