@@ -131,6 +131,12 @@ font-size: 15px;
 }
 
 
+.sidenav{
+  -webkit-box-shadow: 0px 5px 15px -2px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0px 5px 15px -2px rgba(0,0,0,0.2);
+  box-shadow: 0px 5px 15px -2px rgba(0,0,0,0.2);
+}
+
 
 .sidenav .closebtn {
     position: absolute;
@@ -161,6 +167,11 @@ font-size: 15px;
   transition-timing-function: ease;
   z-index: 1000;
   cursor: pointer;
+  
+    -webkit-box-shadow: 0px 5px 15px -2px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 5px 15px -2px rgba(0,0,0,0.2);
+    box-shadow: 0px 5px 15px -2px rgba(0,0,0,0.2);
+
 }
 
 
@@ -305,18 +316,14 @@ section {
     overflow-x: hidden;
 }
 
-
-
 #container{
   width:460px;
   margin-top:20px;
 }
 
-
 section.active {
     opacity: 1;
 }
-
 
 section h2{
   font-family: 'Roboto', sans-serif;
@@ -569,9 +576,11 @@ list-style-type: none;
 
 /* icona e animazione */
 
+
 .legenda-icon{
   fill:#383838;
   cursor: pointer;
+
 }
 
 .legenda-icon:hover{
@@ -713,6 +722,17 @@ padding:2px;}
   display: inline-block;
   margin:10px 10px 10px 0px;
 }
+.autocomplete{
+  -webkit-box-shadow: 0px 5px 15px -2px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0px 5px 15px -2px rgba(0,0,0,0.2);
+  box-shadow: 0px 5px 15px -2px rgba(0,0,0,0.2);
+}
+.search{
+  -webkit-box-shadow: 0px 5px 15px -2px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0px 5px 15px -2px rgba(0,0,0,0.2);
+  box-shadow: 0px 5px 15px -2px rgba(0,0,0,0.2);
+}
+
 input {
   border: 1px solid transparent;
   background-color: #f1f1f1;
