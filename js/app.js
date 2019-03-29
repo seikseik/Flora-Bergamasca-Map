@@ -19,10 +19,6 @@ $(document).ready(function() {
 function openPopover(id){
   $(id).popover('show');
   countX= 1;
-  // $(".popover").on('click', function () {
-  //   let a = document.querySelectorAll(".popover");
-  //    $(a).popover('dispose');
-  //  });
 
    $("#map").on('click', function () {
      let a = document.querySelectorAll(".popover");
@@ -32,8 +28,6 @@ function openPopover(id){
       let a = document.querySelectorAll(".popover");
        $(a).popover('dispose');
      });
-
-
 }
 
 
@@ -49,8 +43,6 @@ b.addEventListener("click",function(){
     openPopover("#openLegend");
     openPopover("#apri");
 });
-
-
 
 
 
@@ -83,23 +75,30 @@ if(tastolegenda.classList.contains("off")){
 
 
 
-function openNav() {
+
+var open = false;
+function openNav(){
+  if(open == false){
     document.getElementById("mySidenav").style.width = "500px";
     document.getElementById("ring-size-tabs").style.width = "500px";
     document.getElementById("ring-size-tabs").style.left = "0px";
-
     document.getElementById("apri").style.left = "500px";
-    document.getElementById("triangolo").classList.add("attivo");
-}
+    document.getElementById("triangolo").classList.add("attivo")
+    document.getElementById("ring_contents").classList.remove("show");
 
-function closeNav() {
+    open = true;
+  } else if( open = true){
     document.getElementById("mySidenav").style.width = "0";
     document.getElementById("ring-size-tabs").style.width = "0px";
     document.getElementById("ring-size-tabs").style.left = "-110px";
-
     document.getElementById("apri").style.left = "0px";
     document.getElementById("triangolo").classList.remove("attivo");
+  
+    open = false;
+  }
 }
+
+
 
 
 $("#ring_contents li a").click(function(){

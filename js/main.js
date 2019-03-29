@@ -1,6 +1,7 @@
 let arrayCircle =[];
 let arrayHeat=[];
 let arrayAll=[];
+let arrayPollini = [];
 var e = activeChapterName + "h";
 var activeChapterName ="par1";
 var livelloLabel;
@@ -86,8 +87,13 @@ function deleteAll(){
   }
 }
 
-
-
+function deletePollini(){
+    for(let d = 0; d < arrayPollini.length; d++){
+      if(arrayPollini.length > 0 && arrayPollini[d] !== activeChapterName){
+      map.removeLayer(arrayPollini[d]);
+    }
+  }
+}
 
 // FUNZIONE POPUP
 
@@ -141,10 +147,7 @@ map.addLayer({
        'layout': {},
        'paint': {
            'fill-color': colore2,
-           // 'fill-color': "black",
            'fill-opacity': 0.6,
-           // 'fill-outline-color': 'black',
-           // 'fill-pattern': 'agricoltura'
 
        }
    });
@@ -622,6 +625,10 @@ function sliderPollini(){
       document.getElementById('mese-attivo').innerText = months[mese];
 
     });
+
+
+arrayPollini.push('pollini');
+
 };
 
 
