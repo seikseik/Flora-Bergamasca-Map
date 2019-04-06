@@ -95,6 +95,15 @@ function deletePollini(){
   }
 }
 
+function deleteClose(){
+  for(let e = 0; e < 10; e++){
+    map.removeLayer(arrayPollini[e]);
+    map.removeLayer(arrayAll[e]);
+    map.removeLayer(arrayHeat[e]);
+    map.removeLayer(arrayCircle[e]);
+  }
+}
+
 // FUNZIONE POPUP
 
 function popup(e, nome){

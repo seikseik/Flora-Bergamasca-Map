@@ -157,9 +157,13 @@ font-size: 15px;
 
 /* TASTO APERTURA SIDENAV */
 
+
+
+
+
 #apri{
-  height:56px;
-  width:56px;
+  height:70px;
+  width:70px;
   background-color: lightgrey;
   position:absolute;
   left:0px;
@@ -173,6 +177,18 @@ font-size: 15px;
 
 }
 
+#apriTex{
+  height:70px;
+  width: 500px;
+  position:absolute;
+  left:70px;
+  padding:15px;
+  /* padding-left:20px; */
+  /* color:#585858; */
+  color:#202020;
+  font-weight: 700;
+  font-size: 22px;
+}
 
 .icona{
   font-size:30px;

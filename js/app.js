@@ -83,17 +83,26 @@ function openNav(){
     document.getElementById("ring-size-tabs").style.width = "500px";
     document.getElementById("ring-size-tabs").style.left = "0px";
     document.getElementById("apri").style.left = "500px";
+    document.getElementById("apri").style.width = "56px";
+    document.getElementById("apri").style.height = "56px";
     document.getElementById("triangolo").classList.add("attivo")
     document.getElementById("ring_contents").classList.remove("show");
 
+    $("#apriTex").hide();
+
     open = true;
   } else if( open = true){
-    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("mySidenav").style.width = "0px";
+    document.getElementById("apri").style.width = "70px";
+    document.getElementById("apri").style.height = "70px";
     document.getElementById("ring-size-tabs").style.width = "0px";
     document.getElementById("ring-size-tabs").style.left = "-110px";
     document.getElementById("apri").style.left = "0px";
     document.getElementById("triangolo").classList.remove("attivo");
-  
+
+    $("#apriTex").show(500);
+    deleteClose();
+
     open = false;
   }
 }
