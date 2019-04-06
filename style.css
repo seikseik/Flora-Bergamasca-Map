@@ -20,7 +20,7 @@ hr{
   position:relative;
   padding:0px;
   margin:0px;
-  margin-bottom:10px;
+  /* margin-bottom:10px; */
 }
 
 /* tutorial */
@@ -146,7 +146,9 @@ font-size: 15px;
     margin-left: 50px;
 }
 
-
+.sidenav a {
+  text-decoration: underline;
+}
 
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
@@ -337,6 +339,13 @@ section {
 #container{
   width:460px;
   margin-top:20px;
+}
+
+.primaSezione{
+  background-color:	#F0F0F0	;
+}
+.primaSezione section.active {
+    background-color:	#F0F0F0	;
 }
 
 section.active {

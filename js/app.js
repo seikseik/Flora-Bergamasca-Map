@@ -100,7 +100,8 @@ function openNav(){
     document.getElementById("apri").style.left = "0px";
     document.getElementById("triangolo").classList.remove("attivo");
 
-    $("#apriTex").show(500);
+    $("#apriTex").show(400);
+
     deleteClose();
 
     open = false;
@@ -113,6 +114,8 @@ function openNav(){
 $("#ring_contents li a").click(function(){
   $("#ringTabDrop").text($(this).text());
 });
+
+
 
 $(document).ready(function () {
          $("#features").load("./bergamo.html");

@@ -34,7 +34,6 @@ grunt.loadNpmTasks('grunt-contrib-uglify');
 grunt.loadNpmTasks('grunt-json-minify');
 
 
-
 //register task
 grunt.registerTask("concat-js",["concat:js"]);
 
