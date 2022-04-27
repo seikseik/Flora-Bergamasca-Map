@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/seikseik/tesi2#readme",
   "devDependencies": {
-    "grunt": "^1.0.3",
+    "grunt": "^1.5.2",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-uglify": "^4.0.0"
   }
